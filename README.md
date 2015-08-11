@@ -1,7 +1,7 @@
 # Weather App
 
-### ** UPLOADING TO CODE PEN SOON ** Check out the project via [CodePen](#) - *allows for editing in the browser*
-### ** UPLOADING TO RAW_GIT SOON ** or via [RawGit](#) - *Live Full Page Demo*.
+** UPLOADING TO CODE PEN SOON Check out the project via [CodePen](#) - *allows for editing in the browser*
+** UPLOADING TO RAW_GIT SOON ** or via [RawGit](#) - *Live Full Page Demo*.
 
 A weather app created while working through FCC
 
