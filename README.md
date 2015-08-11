@@ -1,9 +1,6 @@
 # Weather App
 
-### ** UPLOADING TO CODE PEN SOON ** Check out the project via [CodePen](#) - *allows for editing in the browser*
-### ** UPLOADING TO RAW_GIT SOON ** or via [RawGit](#) - *Live Full Page Demo*.
-
-A weather app created while working through FCC
+*A weather app created while working through FCC*
 
 ####Functionality
 On initial load browser will ask the user if it can access their location. Upon successfully acquiring the location, the app makes an ajax request to OpenWeatherMap.Org for both the current weather and forecast.
@@ -18,3 +15,8 @@ Google’s
 * Material Design Light
 
 #### Icons
+Updating ..
+
+
+* Live preview is not yet on CodePen. Coming Soon.
+* Live preview is not yet nn Raw Git. Coming Soon.
