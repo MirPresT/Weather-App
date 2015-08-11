@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Weather App </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/main.css" charset="utf-8">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.teal-blue.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+
+    <div id="app" class="mdl-shadow--6dp">
+
+        <div id="header" class="">
+            <!--search bar-->
+            <form action="#" id="search">
+                <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                    <input class="mdl-textfield__input" type="text" id="sample1" />
+                    <label class="mdl-textfield__label" for="sample1">
+                        <!-- <i class="material-icons">search</i> -->
+                        Search e.g. London,Uk
+                    </label>
+                </div>
+            </form>
+            <!-- Textfield with Floating Label -->
+
+            <!-- <form action="#" id="search">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                <input class="mdl-textfield__input" type="text" id="sample1" />
+                <label class="mdl-textfield__label" for="sample3">Search City, Country e.g (London, UK)</label>
+              </div>
+            </form> -->
+
+
+            <!--box main content-->
+            <div id="main" class="mdl-grid">
+                <!--<div class="degree"></div>-->
+                <div id='temperature-cell' class='temp-cell'>
+
+                    <div id='temp-cell-number'>
+                        <div id="temp-cell-degree">
+                            <!-- degree symbol for temp -->
+                        </div>
+                        <h2>
+                            00<!-- insert temperature -->
+                        </h2>
+                    </div>
+                    <!-- location goes here -->
+                    <div id="temp-cell-city">
+                        <p></p>
+                    </div>
+                </div>
+                <div id='image-cell' class=''>
+                    <!-- image goes here on load -->
+                </div>
+                <!--main weather display icon-->
+            </div>
+
+
+        </div>
+
+        <!--responsive tabs-->
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar " id="tab-header">
+                <a href="#info-panel" class="mdl-tabs__tab l is-active">Info</a>
+                <a href="#forecast-panel" class="mdl-tabs__tab">Forecast</a>
+            </div>
+
+            <div class="mdl-tabs__panel is-active" id="info-panel">
+                <!--panel one content-->
+            </div>
+
+            <div class="mdl-tabs__panel" id="forecast-panel">
+                <!--panel two content-->
+                <div id="day-1" class=" forecast-card">
+                    <div class="box box-temp">
+                        <h3>00</h3>
+                    </div>
+                    <div class="box box-date">
+                        <p>(insert date)</p>
+                    </div>
+                    <div class="box box-icon">
+                        <img src="/images/svg-sun.svg" alt="weather icon" class="box-icon-svg"/>
+                    </div>
+                </div>
+                <div id="day-2" class="forecast-card">
+                    <div class="box box-temp">
+                        <h3>00</h3>
+                    </div>
+                    <div class="box box-date">
+                        <p>(insert date)</p>
+                    </div>
+                    <div class="box box-icon">
+                        <img src="/images/svg-sun.svg" alt="weather icon" class="box-icon-svg"/>
+                    </div>
+                </div>
+                <div id="day-3" class="forecast-card">
+                    <div class="box box-temp">
+                        <h3>00</h3>
+                    </div>
+                    <div class="box box-date">
+                        <p>(insert date)</p>
+                    </div>
+                    <div class="box box-icon">
+                        <img src="/images/svg-sun.svg" alt="weather icon" class="box-icon-svg"/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--F - C switch-->
+        <label id="switch" class="mdl-switch mdl-js-switch" for="switch-1">
+            <input type="checkbox" id="switch-1" class="mdl-switch__input" />
+            <span class="mdl-switch__label"></span>
+        </label>
+
+    </div>
+    <script type="text/javascript" src="/javascripts/script/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/script/script.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+</body>
+
+
+</html>
