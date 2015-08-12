@@ -34,7 +34,7 @@
                             <!-- degree symbol for temp -->
                         </div>
                         <h2>
-                            00<!-- insert temperature -->
+                            <!-- insert temperature -->
                         </h2>
                     </div>
                     <!-- location goes here -->
@@ -55,7 +55,7 @@
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
             <div class="mdl-tabs__tab-bar " id="tab-header">
                 <a href="#info-panel" class="mdl-tabs__tab l is-active">Info</a>
-                <a href="#forecast-panel" class="mdl-tabs__tab">Forecast</a>
+                <a href="#forecast-panel" class="mdl-tabs__tab">{{ name }}</a>
             </div>
 
             <div class="mdl-tabs__panel is-active" id="info-panel">
