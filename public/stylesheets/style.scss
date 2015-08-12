@@ -74,27 +74,49 @@ $grey: rgb(221, 221, 221);
     -o-animation-timing-function: $type;
     animation-timing-function: $type;
 }
+// define animations
 
+// spin
 @-webkit-keyframes spin {
     from{ -webkit-transform: translate(-50%,-50%); }
-    to{-webkit-transform: translate(-50%,-50%) rotate(45deg); }
+    to{-webkit-transform: translate(-50%,-50%) rotate(360deg); }
 }
 
 @-moz-keyframes spin {
     from{ -moz-transform: translate(-50%,-50%); }
-    to{-moz-transform: translate(-50%,-50%) rotate(45deg); }
+    to{-moz-transform: translate(-50%,-50%) rotate(360deg); }
 }
 
 @-o-keyframes spin {
     from{ -o-transform: translate(-50%,-50%); }
-    to{-o-transform: translate(-50%,-50%) rotate(45deg); }
+    to{-o-transform: translate(-50%,-50%) rotate(360deg); }
 }
 
 @keyframes spin {
     from{ transform: translate(-50%,-50%); }
-    to{transform: translate(-50%,-50%) rotate(45deg); }
+    to{ transform: translate(-50%,-50%) rotate(360deg); }
 }
 
+// Box Fade In
+@-webkit-keyframes fadeIn {
+    from{ opacity: 0; }
+    to{opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+    from{ opacity:0; }
+    to{ opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+    from{ opacity: 0; }
+    to{ opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from{ opacity: 0; }
+    to{ opacity: 1; }
+}
 
 
 body {
@@ -106,11 +128,12 @@ body {
     left: 50%;
     transform: translateX(-50%);
     background-color: $grey ;
-    height: 750px;
+    max-height: 800px;
+    height: 95vh;
     width: 600px;
     max-width: 900px;
     min-width: 400px;
-    top: 5em;
+    top:20px;
 }
 #header {
     position: relative;
@@ -214,9 +237,64 @@ body {
 }
 
 // tab content
+.info-card {
+    @include create-box(100px,100%, none);
+    border-bottom: 2px solid $grey - 10;
+}
+
+.box-info {
+    @include create-box(100px, 200px, none);
+    display: inline-block;
+}
+
+.box-left {
+    float: left;
+    position: relative;
+    h3 {
+        font-family: 'Roboto',sans-serif;
+        font-size: 40px;
+        margin: 0;
+        color: $theme-green;
+        @include center-me();
+    }
+}
+
+.box-middle {
+    position: relative;
+    p {
+        font-family: 'Roboto', sans-serif;
+        width: 95%;
+        font-size: 18px;
+        margin: 0px;
+        font-weight: 300;
+        color: black;
+        @include center-me();
+        text-align: center;
+    }
+}
+
+.box-right {
+    float: right;
+    position: relative;
+    img {
+        @include center-me();
+        height: 60%;
+    }
+}
+
+
+
+// tab content
 .forecast-card{
     @include create-box(110px, 100%, $grey);
     border-bottom: 2px solid $grey - 10;
+    @include animation-name( fadeIn );
+    @include animation-duration( 1800ms );
+    @include iteration-count( 1 );
+    @include animation-delay(0);
+    @include animation-timing-function( ease );
+    @include animation-fill-mode( both );
+    @include animation-direction( forward );
 }
 
 .box{
@@ -256,12 +334,5 @@ body {
     .box-icon-svg {
         @include center-me();
         height: 60%;
-        @include animation-name( spin );
-        @include animation-duration( 2s );
-        @include iteration-count( 1 );
-        @include animation-delay(0);
-        @include animation-timing-function( ease );
-        @include animation-fill-mode( both );
-        @include animation-direction( forward );
     }
 }

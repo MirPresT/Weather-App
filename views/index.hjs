@@ -23,15 +23,6 @@
                     </label>
                 </div>
             </form>
-            <!-- Textfield with Floating Label -->
-
-            <!-- <form action="#" id="search">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-                <input class="mdl-textfield__input" type="text" id="sample1" />
-                <label class="mdl-textfield__label" for="sample3">Search City, Country e.g (London, UK)</label>
-              </div>
-            </form> -->
-
 
             <!--box main content-->
             <div id="main" class="mdl-grid">
@@ -69,10 +60,54 @@
 
             <div class="mdl-tabs__panel is-active" id="info-panel">
                 <!--panel one content-->
+                <div id="" class="info-card">
+                    <div id="box-wind-spd"class="box-left box-info">
+                        <h3>0</h3>
+                    </div>
+                    <div id="box-wind-text" class="box-middle box-info">
+                        <p>Wind Speed</p>
+                    </div>
+                    <div id="box-wind-icon"class="box-right box-info">
+
+                    </div>
+                </div>
+                <div id="" class="info-card">
+                    <div id="box-wind-spd"class="box-left box-info">
+                        <h3>0</h3>
+                    </div>
+                    <div id="box-wind-text" class="box-middle box-info">
+                        <p>Wind Speed</p>
+                    </div>
+                    <div id="box-wind-icon"class="box-right box-info">
+
+                    </div>
+                </div>
+                <div id="" class="info-card">
+                    <div id="box-wind-spd"class="box-left box-info">
+                        <h3>0</h3>
+                    </div>
+                    <div id="box-wind-text" class="box-middle box-info">
+                        <p>Wind Speed</p>
+                    </div>
+                    <div id="box-wind-icon"class="box-right box-info">
+
+                    </div>
+                </div>
+                <div id="" class="info-card">
+                    <div id="box-wind-spd"class="box-left box-info">
+                        <h3>0</h3>
+                    </div>
+                    <div id="box-wind-text" class="box-middle box-info">
+                        <p>Wind Speed</p>
+                    </div>
+                    <div id="box-wind-icon"class="box-right box-info">
+
+                    </div>
+                </div>
             </div>
 
             <div class="mdl-tabs__panel" id="forecast-panel">
-                <!--panel two content-->
+                <!--panel two content boxes-->
                 <div id="day-1" class=" forecast-card">
                     <div class="box box-temp">
                         <h3>00</h3>
@@ -117,6 +152,7 @@
         </label>
 
     </div>
+
     <script type="text/javascript" src="/javascripts/script/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="/javascripts/script/script.js"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
