@@ -21,16 +21,16 @@
                 // declaring variables to maintain scope at this level
                 // will define these variables below, inside of one of the functions
                 var dIF,
-                dIc,
-                dIIF,
-                dIIc,
-                dIIIF,
-                dIIIc;
+                    dIc,
+                    dIIF,
+                    dIIc,
+                    dIIIF,
+                    dIIIc;
 
                 function reload(json) {
                     // create weather object
                     var weatherObj = {
-                        'day' : new Date(json.dt * 1000).getDate(),
+                        'day': new Date(json.dt * 1000).getDate(),
                         'city': json.name,
                         'sate': 'CA',
                         'fahrenheit': Math.round(json.main.temp),
@@ -48,17 +48,17 @@
                     // send current date to top success function for access later
                     currentDate = weatherObj.day;
 
-                    console.log(weatherObj.city,weatherObj.dcr, weatherObj.fahrenheit,weatherObj.icon,
-                    weatherObj.dayNight);
+                    console.log(weatherObj.city, weatherObj.dcr, weatherObj.fahrenheit, weatherObj.icon,
+                        weatherObj.dayNight);
 
                     // set default temp to display and insert into html depending on check
                     // have to use a different temp if bottom button is checked
-                    if ( $('#switch').hasClass('is-checked') ) {
+                    if ($('#switch').hasClass('is-checked')) {
                         var tempC = weatherObj.celcius;
                     }
-                    $('#temp-cell-number h2').html( tempC || weatherObj.fahrenheit );
+                    $('#temp-cell-number h2').html(tempC || weatherObj.fahrenheit);
                     // insert weather icon where I want;
-                    $('#image-cell').html(setIcon( "weatherImage", 'NULL', weatherObj.icon ));
+                    $('#image-cell').html(setIcon("weatherImage", 'NULL', weatherObj.icon));
                     // insert city under temp
                     $('#temp-cell-city p').html(weatherObj.city)
 
@@ -67,16 +67,16 @@
                     $('#box-humidity-percent h3').html(weatherObj.humidity + '%');
 
                     // turn time object into a string and get only the time for both sunrise and sunset
-                    var sunrise = weatherObj.sunrise.toString().split(' ')[4].slice(0,-3);
-                    var sunset = weatherObj.sunset.toString().split(' ')[4].slice(0,-3);
+                    var sunrise = weatherObj.sunrise.toString().split(' ')[4].slice(0, -3);
+                    var sunset = weatherObj.sunset.toString().split(' ')[4].slice(0, -3);
                     // if first number is 0 ignore
-                    sunrise = parseInt(sunrise.charAt(0)) === 0? sunrise.slice(1): sunrise.slice(0, sunrise.length);
-                    sunset = parseInt(sunrise.charAt(0)) === 0? sunset.slice(1): sunset.slice(0, sunset.length);
+                    sunrise = parseInt(sunrise.charAt(0)) === 0 ? sunrise.slice(1) : sunrise.slice(0, sunrise.length);
+                    sunset = parseInt(sunrise.charAt(0)) === 0 ? sunset.slice(1) : sunset.slice(0, sunset.length);
                     console.log(weatherObj.sunrise, weatherObj.sunset);
                     // convert from 24 hour time to normal
-                    var hr = parseInt(sunset.slice(0,2)) // get just first two digits
-                    // if the hour is larger than 12 subtract 12 and add it back to rest of string
-                    sunset = hr > 12? hr - 12 + sunset.slice(2): sunset;
+                    var hr = parseInt(sunset.slice(0, 2)) // get just first two digits
+                        // if the hour is larger than 12 subtract 12 and add it back to rest of string
+                    sunset = hr > 12 ? hr - 12 + sunset.slice(2) : sunset;
                     // if search is done the request still comes back based on user timezone not search timezone ... Include the timeZone in description for clarity
                     $('#box-sunrise-time h3').html(sunrise + ' am');
                     $('#box-sunset-time h3').html(sunset + ' pm');
@@ -84,43 +84,63 @@
                     // fade in info panel with add class jquery
                     $('.info-card').addClass('animate-fadein');
 
+                    // set speed of wind tourbine
+                    function setWind(spd) {
+                        [
+                            [20, 3],
+                            [40, 1.5],
+                            [60, 1],
+                            [80, .8],
+                            [100, .5]
+                        ].reduce(function(a, b) {
+                            if (spd > a[0] && spd <= b[0]) {
+                                var duration = b[1] + "s";
+                                $('#tSpinner').css("animation-duration", duration);
+                            }
+                            return b;
+
+                        }, [0]);
+                    }
+
+                    setWind( weatherObj.wind );
+
                 }
                 reload(data); // initial load of top data
 
-                function setIcon( htmlId, htmlClass, iconId ) {
+                function setIcon(htmlId, htmlClass, iconId) {
                     // match designed icon to provided icon
                     var weatherIcons = [{
-                        '01': "<img id='" + htmlId  +"' class='"+htmlClass+"' src='/images/svg-sun.svg'>",
+                        '01': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-sun.svg'>",
                         'description': 'clear sky'
                     }, {
-                        '02': "<img id='" + htmlId + "' class='"+htmlClass+"' src ='/images/svg-sun-clouds.svg'>",
+                        '02': "<img id='" + htmlId + "' class='" + htmlClass + "' src ='/images/svg-sun-clouds.svg'>",
                         'description': 'few clouds'
                     }, {
-                        '03': "<img id='" + htmlId + "'  class='"+htmlClass+"' src='/images/svg-clouds.svg'>",
+                        '03': "<img id='" + htmlId + "'  class='" + htmlClass + "' src='/images/svg-clouds.svg'>",
                         'description': 'scattered clouds'
                     }, {
-                        '04': "<img id='" + htmlId + "'  class='"+htmlClass+"' src='/images/svg-clouds.svg'>",
+                        '04': "<img id='" + htmlId + "'  class='" + htmlClass + "' src='/images/svg-clouds.svg'>",
                         'description': 'broken clouds'
                     }, {
-                        '09': "<img id='" + htmlId +  "' class='"+htmlClass+"' src='/images/svg-rain.svg'>",
+                        '09': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-rain.svg'>",
                         'description': 'shower rain'
                     }, {
-                        '10': "<img id='" + htmlId +  "' class='"+htmlClass+"' src='/images/svg-rain.svg'>",
+                        '10': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-rain.svg'>",
                         'description': 'rain'
                     }, {
-                        '11': "<img id='" + htmlId + "' class='"+htmlClass+"' sr c='/images/svg-lightning.svg'>",
+                        '11': "<img id='" + htmlId + "' class='" + htmlClass + "' sr c='/images/svg-lightning.svg'>",
                         'description': 'thunderstorm'
                     }, {
-                        '13': "<img id='" + htmlId +  "' class='"+htmlClass+"' src='/images/svg-snow.svg'>",
+                        '13': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-snow.svg'>",
                         'description': 'snow'
                     }, {
-                        '50': "<img id='" + htmlId +  "' class='"+htmlClass+"' src='/images/svg-sun.svg'>",
+                        '50': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-sun.svg'>",
                         'description': 'mist'
                     }];
                     var imageToReturn;
                     //  iterate over array of image tag objects into single url
-                    var imageToDisplayObj = weatherIcons.map(function( obj ) {
-                        var prop = Object.keys( obj )[0];
+                    var imageToDisplayObj = weatherIcons.map(function(obj) {
+                        var prop = Object.keys(obj)[0];
                         if (iconId === prop) {
                             // set image to display because we found a match
                             imageToReturn = obj[prop];
@@ -129,9 +149,9 @@
                     return imageToReturn
                 }
                 // initial forecast api request using lat and lon used on page load
-                var forecast_coord_url = "http://api.openweathermap.org/data/2.5/forecast?lat="+userLat+"&lon="+userLon + "&units=imperial";
+                var forecast_coord_url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + userLat + "&lon=" + userLon + "&units=imperial";
 
-                function loadForecast( requestUrl ) {
+                function loadForecast(requestUrl) {
                     $.ajax({
 
                         type: 'GET',
@@ -143,9 +163,9 @@
                             var forcastArr = [];
 
                             var arr = Array(data);
-                            arr.map(function(a){
+                            arr.map(function(a) {
                                 // console.log(Object.keys(a))
-                                a["list"].map(function(b){
+                                a["list"].map(function(b) {
                                     // grab time from json if time === 12 use it
 
                                     var date = new Date(b.dt * 1000);
@@ -154,62 +174,65 @@
                                     var dayOfWeekNumber = date.getDay();
                                     var dayOfWeekWord;
                                     var days = [
-                                        [0,'Sunday'],[1,'Monday'],
-                                        [2,'Tuesday'],[3,'Wednesday'],
-                                        [4,'Thursday'],[5,'Friday'],
+                                        [0, 'Sunday'],
+                                        [1, 'Monday'],
+                                        [2, 'Tuesday'],
+                                        [3, 'Wednesday'],
+                                        [4, 'Thursday'],
+                                        [5, 'Friday'],
                                         [6, 'Saturday']
                                     ];
                                     // convert day of week number to word
-                                    days.map(function(a){
-                                        if ( a[0] === dayOfWeekNumber ) {
+                                    days.map(function(a) {
+                                        if (a[0] === dayOfWeekNumber) {
                                             dayOfWeekWord = a[1];
                                         }
                                     })
 
-                                    if( time === 14 && dayOfMonth !== currentDate ) {
+                                    if (time === 14 && dayOfMonth !== currentDate) {
                                         var temp = Math.round(b.main.temp);
                                         var fullIcon = b.weather[0].icon; // full icon include (d)ay /(n)ight
-                                        icon = fullIcon.slice(0,-1);
-                                        forcastArr.push ( Array(temp,dayOfWeekWord+ ' '+dayOfMonth,
-                                        setIcon(null, 'box-icon-svg', icon)));
+                                        icon = fullIcon.slice(0, -1);
+                                        forcastArr.push(Array(temp, dayOfWeekWord + ' ' + dayOfMonth,
+                                            setIcon(null, 'box-icon-svg', icon)));
                                     }
                                 });
                             });
 
                             // if Celcius button is checked  convert values
-                            if ( $('#switch').hasClass('is-checked') ) {
-                                var tempI = convert( forcastArr[0][0] );
-                                var tempII = convert( forcastArr[1][0] );
-                                var tempIII = convert( forcastArr[2][0] );
+                            if ($('#switch').hasClass('is-checked')) {
+                                var tempI = convert(forcastArr[0][0]);
+                                var tempII = convert(forcastArr[1][0]);
+                                var tempIII = convert(forcastArr[2][0]);
                             }
 
-                                $('#day-1 .box-temp h3').html( tempI || forcastArr[0][0] );
-                                $('#day-1 .box-date p').html(forcastArr[0][1]);
-                                $('#day-1 .box-icon').html(forcastArr[0][2]);
-                                // day 2
-                                $('#day-2 .box-temp h3').html( tempII || forcastArr[1][0]);
-                                $('#day-2 .box-date p').html(forcastArr[1][1]);
-                                $('#day-2 .box-icon').html(forcastArr[1][2]);
-                                // day 3
-                                $('#day-3 .box-temp h3').html( tempIII || forcastArr[2][0]);
-                                $('#day-3 .box-date p').html( forcastArr[2][1]);
-                                $('#day-3 .box-icon').html(forcastArr[2][2]);
+                            $('#day-1 .box-temp h3').html(tempI || forcastArr[0][0]);
+                            $('#day-1 .box-date p').html(forcastArr[0][1]);
+                            $('#day-1 .box-icon').html(forcastArr[0][2]);
+                            // day 2
+                            $('#day-2 .box-temp h3').html(tempII || forcastArr[1][0]);
+                            $('#day-2 .box-date p').html(forcastArr[1][1]);
+                            $('#day-2 .box-icon').html(forcastArr[1][2]);
+                            // day 3
+                            $('#day-3 .box-temp h3').html(tempIII || forcastArr[2][0]);
+                            $('#day-3 .box-date p').html(forcastArr[2][1]);
+                            $('#day-3 .box-icon').html(forcastArr[2][2]);
 
 
                             // avoid making second request for info
                             dIF = forcastArr[0][0];
-                            dIc = convert( dIF );
+                            dIc = convert(dIF);
 
                             dIIF = forcastArr[1][0];
-                            dIIc = convert( dIIF );
+                            dIIc = convert(dIIF);
 
                             dIIIF = forcastArr[2][0];
-                            dIIIc = convert( dIIIF );
+                            dIIIc = convert(dIIIF);
 
                         }
                     });
                 }
-                loadForecast( forecast_coord_url ); // initial load of forecast
+                loadForecast(forecast_coord_url); // initial load of forecast
 
                 // search function to grab new weather data all the information
                 $('input').on('keydown', function(e) {
@@ -229,33 +252,33 @@
                             url: searchUrl, //url generated from search
                             success: function(data) {
                                 reload(data); // load main
-                                loadForecast( forecastUrl ); // load forecast based on city from search
+                                loadForecast(forecastUrl); // load forecast based on city from search
                             }
                         });
                     }
                 });
 
-                function convert ( n ) {
-                    return  Math.round(( n - 32) * .555555);
+                function convert(n) {
+                    return Math.round((n - 32) * .555555);
                 }
                 // grab initial value from dom and convert for celcius version
                 var mTempF = $('#temperature-cell h2').html();
-                var Mc = convert( mTempF );
+                var Mc = convert(mTempF);
                 console.log(Mc);
 
                 // change temperature on switch
                 $('#switch-1').click(function() {
                     if ($('#switch').hasClass('is-checked')) { // convert to F
-                        $('#temperature-cell h2').html( Mc );
+                        $('#temperature-cell h2').html(Mc);
                         // convert forecast temps
-                        $('#day-1 .box-temp h3').html( dIc );
-                        $('#day-2 .box-temp h3').html( dIIc );
-                        $('#day-3 .box-temp h3').html( dIIIc );
+                        $('#day-1 .box-temp h3').html(dIc);
+                        $('#day-2 .box-temp h3').html(dIIc);
+                        $('#day-3 .box-temp h3').html(dIIIc);
                     } else {
-                        $('#temperature-cell h2').html( mTempF );
-                        $('#day-1 .box-temp h3').html( dIF );
-                        $('#day-2 .box-temp h3').html( dIIF );
-                        $('#day-3 .box-temp h3').html( dIIIF );
+                        $('#temperature-cell h2').html(mTempF);
+                        $('#day-1 .box-temp h3').html(dIF);
+                        $('#day-2 .box-temp h3').html(dIIF);
+                        $('#day-3 .box-temp h3').html(dIIIF);
                     }
                 });
                 // end success function

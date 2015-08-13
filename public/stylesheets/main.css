@@ -212,11 +212,7 @@ body {
   float: right;
   position: relative; }
   .box-right img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
-    height: 60%; }
+    height: 65%; }
   .box-right #tourbine {
     -webkit-animation-name: spin;
     -moz-animation-name: spin;
@@ -322,5 +318,60 @@ body {
   bottom: 20px;
   left: 90%;
   width: 20px; }
+
+@keyframes windSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg); }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg); } }
+#tSpinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  -webkit-animation-name: windSpin;
+  -moz-animation-name: windSpin;
+  -o-animation-name: windSpin;
+  animation-name: windSpin;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-direction: forwards;
+  -moz-animation-direction: forwards;
+  -o-animation-direction: forwards;
+  animation-direction: forwards; }
+
+#pole {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) !important;
+  height: 35%;
+  width: .35em;
+  background-color: #009688;
+  border-radius: 40% 40% 0 0;
+  bottom: 0px; }
+
+.box-right #sunrise {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) !important;
+  bottom: 0px; }
+.box-right #humidity {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  height: 40%; }
+.box-right #sunset {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) !important;
+  bottom: 0px;
+  height: 40%; }
 
 /*# sourceMappingURL=main.css.map */

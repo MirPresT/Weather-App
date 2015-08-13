@@ -66,7 +66,8 @@
                         <p>Wind Speed</p>
                     </div>
                     <div id="box-wind-icon"class="box-right box-info">
-                        <!-- pissed cause my animated image should go here -->
+                        <img id="tSpinner" src="/images/tourbine-Spinner.png" alt="" />
+                        <div id="pole"></div>
                     </div>
                 </div>
                 <div id="" class="info-card">
@@ -77,7 +78,7 @@
                         <p>Humidity</p>
                     </div>
                     <div id="box-wind-icon"class="box-right box-info">
-
+                        <img src="/images/svg-humidity.svg"  id="humidity" alt="" />
                     </div>
                 </div>
                 <div id="" class="info-card">
@@ -87,8 +88,8 @@
                     <div id="box-sunrise-text" class="box-middle box-info">
                         <p>Sunrise</p>
                     </div>
-                    <div id="box-wind-icon"class="box-right box-info">
-
+                    <div id="box-sunrise-icon"class="box-right box-info">
+                        <img id="sunrise" src="/images/svg-sunrise.svg" alt="" />
                     </div>
                 </div>
                 <div id="" class="info-card">
@@ -99,7 +100,7 @@
                         <p>Sunset</p>
                     </div>
                     <div id="box-wind-icon"class="box-right box-info">
-
+                        <img src="/images/svg-sunset.svg" id="sunset" alt="" />
                     </div>
                 </div>
             </div>

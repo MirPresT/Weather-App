@@ -38,7 +38,7 @@ $grey: rgb(221, 221, 221);
     -o-animation-duration: $s;
     animation-duration: $s ;
 }
-@mixin iteration-count ( $s ) {
+@mixin animation-iteration-count ( $s ) {
     -webkit-animation-iteration-count: $s ;
     -moz-animation-iteration-count: $s;
     -o-animation-iteration-count: $s;
@@ -236,7 +236,7 @@ body {
 .animate-fadein{
     @include animation-name( fadeIn );
     @include animation-duration( 2000ms );
-    @include iteration-count( 1 );
+    @include animation-iteration-count( 1 );
     @include animation-timing-function( ease );
     @include animation-fill-mode( both );
     @include animation-direction( forward );
@@ -293,13 +293,12 @@ body {
     float: right;
     position: relative;
     img {
-        @include center-me();
-        height: 60%;
+        height: 65%;
     }
     #tourbine {
         @include animation-name( spin );
         @include animation-duration( 1s );
-        @include iteration-count( infinite );
+        @include animation-iteration-count( infinite );
         @include animation-delay(0);
         // @include animation-fill-mode(  );
         @include animation-timing-function( linear );
@@ -319,7 +318,7 @@ body {
     border-bottom: 2px solid $grey - 10;
     @include animation-name( fadeIn );
     @include animation-duration( 2000ms );
-    @include iteration-count( 1 );
+    @include animation-iteration-count( 1 );
     @include animation-timing-function( ease );
     @include animation-fill-mode( both );
     @include animation-direction( forward );
@@ -370,4 +369,47 @@ body {
     bottom: 20px;
     left: 90%;
     width: 20px;
+}
+
+// spinner animation
+
+@keyframes windSpin {
+  0% {
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
+  100% {
+     transform: translate(-50%,-50%) rotate(360deg);
+  }
+}
+
+#tSpinner {
+    @include center-me();
+    @include animation-name( windSpin );
+    @include animation-iteration-count(infinite) ;
+    @include animation-timing-function(linear);
+    @include animation-direction(forwards);
+}
+
+#pole {
+    @include center-me-horiz();
+    height: 35%;
+    width: .35em;
+    background-color: $theme-green;
+    border-radius: 40% 40% 0 0;
+    bottom: 0px;
+}
+.box-right{
+    #sunrise {
+        @include center-me-horiz();
+        bottom: 0px;
+    }
+    #humidity {
+        @include center-me();
+        height: 40%;
+    }
+    #sunset {
+        @include center-me-horiz();
+        bottom: 0px;
+        height: 40%;
+    }
 }
