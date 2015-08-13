@@ -47,58 +47,56 @@
                 </div>
                 <!--main weather display icon-->
             </div>
-
-
         </div>
 
         <!--responsive tabs-->
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
             <div class="mdl-tabs__tab-bar " id="tab-header">
                 <a href="#info-panel" class="mdl-tabs__tab l is-active">Info</a>
-                <a href="#forecast-panel" class="mdl-tabs__tab">{{ name }}</a>
+                <a href="#forecast-panel" class="mdl-tabs__tab">Forecast</a>
             </div>
 
             <div class="mdl-tabs__panel is-active" id="info-panel">
                 <!--panel one content-->
                 <div id="" class="info-card">
                     <div id="box-wind-spd"class="box-left box-info">
-                        <h3>0</h3>
+                        <h3></h3>
                     </div>
                     <div id="box-wind-text" class="box-middle box-info">
                         <p>Wind Speed</p>
+                    </div>
+                    <div id="box-wind-icon"class="box-right box-info">
+                        <!-- pissed cause my animated image should go here -->
+                    </div>
+                </div>
+                <div id="" class="info-card">
+                    <div id="box-humidity-percent"class="box-left box-info">
+                        <h3></h3>
+                    </div>
+                    <div id="box-humidity-text" class="box-middle box-info">
+                        <p>Humidity</p>
                     </div>
                     <div id="box-wind-icon"class="box-right box-info">
 
                     </div>
                 </div>
                 <div id="" class="info-card">
-                    <div id="box-wind-spd"class="box-left box-info">
-                        <h3>0</h3>
+                    <div id="box-sunrise-time"class="box-left box-info time">
+                        <h3></h3>
                     </div>
-                    <div id="box-wind-text" class="box-middle box-info">
-                        <p>Wind Speed</p>
-                    </div>
-                    <div id="box-wind-icon"class="box-right box-info">
-
-                    </div>
-                </div>
-                <div id="" class="info-card">
-                    <div id="box-wind-spd"class="box-left box-info">
-                        <h3>0</h3>
-                    </div>
-                    <div id="box-wind-text" class="box-middle box-info">
-                        <p>Wind Speed</p>
+                    <div id="box-sunrise-text" class="box-middle box-info">
+                        <p>Sunrise</p>
                     </div>
                     <div id="box-wind-icon"class="box-right box-info">
 
                     </div>
                 </div>
                 <div id="" class="info-card">
-                    <div id="box-wind-spd"class="box-left box-info">
-                        <h3>0</h3>
+                    <div id="box-sunset-time"class="box-left box-info time">
+                        <h3></h3>
                     </div>
-                    <div id="box-wind-text" class="box-middle box-info">
-                        <p>Wind Speed</p>
+                    <div id="box-sunset-text" class="box-middle box-info">
+                        <p>Sunset</p>
                     </div>
                     <div id="box-wind-icon"class="box-right box-info">
 

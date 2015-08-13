@@ -1,23 +1,25 @@
 @-webkit-keyframes spin {
-  from {
+  0% {
     -webkit-transform: translate(-50%, -50%); }
-  to {
-    -webkit-transform: translate(-50%, -50%) rotate(360deg); } }
+  50% {
+    -webkit-transform: translate(-50%, -50%) rotate(180deg); } }
 @-moz-keyframes spin {
-  from {
+  0% {
     -moz-transform: translate(-50%, -50%); }
-  to {
-    -moz-transform: translate(-50%, -50%) rotate(360deg); } }
+  50% {
+    -moz-transform: translate(-50%, -50%) rotate(180deg); } }
 @-o-keyframes spin {
-  from {
+  0% {
     -o-transform: translate(-50%, -50%); }
-  to {
-    -o-transform: translate(-50%, -50%) rotate(360deg); } }
+  50% {
+    -o-transform: translate(-50%, -50%) rotate(180deg); } }
 @keyframes spin {
-  from {
+  0% {
     transform: translate(-50%, -50%); }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg); } }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg); }
+  100% {
+    transform: translate(-50%, -50%) rotate(0); } }
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0; }
@@ -126,12 +128,6 @@ body {
     transform: translate(-50%, -50%) !important;
     height: 100%; }
 
-#switch {
-  position: absolute;
-  bottom: 20px;
-  left: 90%;
-  width: 20px; }
-
 #tab-header {
   background-color: #02c39a; }
 
@@ -141,6 +137,32 @@ body {
 
 #tab-header .is-active {
   color: #f0f3bd !important; }
+
+.animate-fadein {
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 2000ms;
+  -moz-animation-duration: 2000ms;
+  -o-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  -o-animation-timing-function: ease;
+  animation-timing-function: ease;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-direction: forward;
+  -moz-animation-direction: forward;
+  -o-animation-direction: forward;
+  animation-direction: forward; }
 
 .info-card {
   height: 100px;
@@ -153,19 +175,23 @@ body {
   width: 200px;
   background-color: none;
   display: inline-block; }
+  .box-info h3 {
+    font-size: 25px; }
 
 .box-left {
   float: left;
   position: relative; }
   .box-left h3 {
     font-family: 'Roboto',sans-serif;
-    font-size: 40px;
     margin: 0;
     color: #009688;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) !important; }
+
+.time h3 {
+  font-size: 20px; }
 
 .box-middle {
   position: relative; }
@@ -191,6 +217,31 @@ body {
     left: 50%;
     transform: translate(-50%, -50%) !important;
     height: 60%; }
+  .box-right #tourbine {
+    -webkit-animation-name: spin;
+    -moz-animation-name: spin;
+    -o-animation-name: spin;
+    animation-name: spin;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-delay: 0;
+    -moz-animation-delay: 0;
+    -o-animation-delay: 0;
+    animation-delay: 0;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear; }
+  .box-right #tourbine-pole {
+    position: absolute;
+    top: 105px;
+    left: 100px; }
 
 .forecast-card {
   height: 110px;
@@ -201,18 +252,14 @@ body {
   -moz-animation-name: fadeIn;
   -o-animation-name: fadeIn;
   animation-name: fadeIn;
-  -webkit-animation-duration: 1800ms;
-  -moz-animation-duration: 1800ms;
-  -o-animation-duration: 1800ms;
-  animation-duration: 1800ms;
+  -webkit-animation-duration: 2000ms;
+  -moz-animation-duration: 2000ms;
+  -o-animation-duration: 2000ms;
+  animation-duration: 2000ms;
   -webkit-animation-iteration-count: 1;
   -moz-animation-iteration-count: 1;
   -o-animation-iteration-count: 1;
   animation-iteration-count: 1;
-  -webkit-animation-delay: 0;
-  -moz-animation-delay: 0;
-  -o-animation-delay: 0;
-  animation-delay: 0;
   -webkit-animation-timing-function: ease;
   -moz-animation-timing-function: ease;
   -o-animation-timing-function: ease;
@@ -269,5 +316,11 @@ body {
     left: 50%;
     transform: translate(-50%, -50%) !important;
     height: 60%; }
+
+#switch {
+  position: absolute;
+  bottom: 20px;
+  left: 90%;
+  width: 20px; }
 
 /*# sourceMappingURL=main.css.map */

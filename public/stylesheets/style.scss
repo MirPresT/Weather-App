@@ -78,23 +78,24 @@ $grey: rgb(221, 221, 221);
 
 // spin
 @-webkit-keyframes spin {
-    from{ -webkit-transform: translate(-50%,-50%); }
-    to{-webkit-transform: translate(-50%,-50%) rotate(360deg); }
+    0%{ -webkit-transform: translate(-50%,-50%);}
+    50% { -webkit-transform: translate(-50%,-50%) rotate(180deg);}
 }
 
 @-moz-keyframes spin {
-    from{ -moz-transform: translate(-50%,-50%); }
-    to{-moz-transform: translate(-50%,-50%) rotate(360deg); }
+    0%{ -moz-transform: translate(-50%,-50%);}
+    50% { -moz-transform: translate(-50%,-50%) rotate(180deg);}
 }
 
 @-o-keyframes spin {
-    from{ -o-transform: translate(-50%,-50%); }
-    to{-o-transform: translate(-50%,-50%) rotate(360deg); }
+    0%{ -o-transform: translate(-50%,-50%);}
+    50% { -o-transform: translate(-50%,-50%) rotate(180deg);}
 }
 
 @keyframes spin {
-    from{ transform: translate(-50%,-50%); }
-    to{ transform: translate(-50%,-50%) rotate(360deg); }
+    0%{ transform: translate(-50%,-50%);}
+    50% { transform: translate(-50%,-50%) rotate(180deg);}
+    100% { transform: translate(-50%,-50%) rotate(0);}
 }
 
 // Box Fade In
@@ -217,12 +218,7 @@ body {
         height: 100%;
     }
 }
-#switch {
-    position: absolute;
-    bottom: 20px;
-    left: 90%;
-    width: 20px;
-}
+
 // tabs
 #tab-header {
     background-color: $green;
@@ -236,15 +232,31 @@ body {
   color: $beige !important;
 }
 
+
+.animate-fadein{
+    @include animation-name( fadeIn );
+    @include animation-duration( 2000ms );
+    @include iteration-count( 1 );
+    @include animation-timing-function( ease );
+    @include animation-fill-mode( both );
+    @include animation-direction( forward );
+}
+
 // tab content
 .info-card {
     @include create-box(100px,100%, none);
     border-bottom: 2px solid $grey - 10;
 }
 
+
+
 .box-info {
     @include create-box(100px, 200px, none);
     display: inline-block;
+
+    h3 {
+        font-size: 25px;
+    }
 }
 
 .box-left {
@@ -252,10 +264,14 @@ body {
     position: relative;
     h3 {
         font-family: 'Roboto',sans-serif;
-        font-size: 40px;
         margin: 0;
         color: $theme-green;
         @include center-me();
+    }
+}
+.time {
+    h3{
+    font-size: 20px;
     }
 }
 
@@ -280,6 +296,19 @@ body {
         @include center-me();
         height: 60%;
     }
+    #tourbine {
+        @include animation-name( spin );
+        @include animation-duration( 1s );
+        @include iteration-count( infinite );
+        @include animation-delay(0);
+        // @include animation-fill-mode(  );
+        @include animation-timing-function( linear );
+    }
+    #tourbine-pole {
+        position: absolute;
+        top: 105px;
+        left: 100px;
+    }
 }
 
 
@@ -289,9 +318,8 @@ body {
     @include create-box(110px, 100%, $grey);
     border-bottom: 2px solid $grey - 10;
     @include animation-name( fadeIn );
-    @include animation-duration( 1800ms );
+    @include animation-duration( 2000ms );
     @include iteration-count( 1 );
-    @include animation-delay(0);
     @include animation-timing-function( ease );
     @include animation-fill-mode( both );
     @include animation-direction( forward );
@@ -335,4 +363,11 @@ body {
         @include center-me();
         height: 60%;
     }
+}
+// button switch
+#switch {
+    position: absolute;
+    bottom: 20px;
+    left: 90%;
+    width: 20px;
 }

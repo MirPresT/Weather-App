@@ -18,14 +18,14 @@
             url: url_api,
             success: function(data) {
 
-                var dIF;
-                var dIc;
-
-                var dIIF;
-                var dIIc;
-
-                var dIIIF;
-                var dIIIc;
+                // declaring variables to maintain scope at this level
+                // will define these variables below, inside of one of the functions
+                var dIF,
+                dIc,
+                dIIF,
+                dIIc,
+                dIIIF,
+                dIIIc;
 
                 function reload(json) {
                     // create weather object
@@ -35,13 +35,14 @@
                         'sate': 'CA',
                         'fahrenheit': Math.round(json.main.temp),
                         'celcius': Math.round((json.main.temp - 32) * 5 / 9),
-                        'wind': json.wind.speed,
+                        'wind': Math.round(json.wind.speed),
                         'dcr': json.weather[0].description,
                         'cloudiness': json.clouds.all,
                         'icon': json.weather[0].icon.slice(0, json.weather[0].icon.length - 1),
                         'dayNight': json.weather[0].icon.slice(-1),
                         'sunrise': new Date(json.sys.sunrise * 1000),
-                        'sunset': new Date(json.sys.sunset * 1000)
+                        'sunset': new Date(json.sys.sunset * 1000),
+                        'humidity': Math.round(json.main.humidity)
                     };
 
                     // send current date to top success function for access later
@@ -56,10 +57,33 @@
                         var tempC = weatherObj.celcius;
                     }
                     $('#temp-cell-number h2').html( tempC || weatherObj.fahrenheit );
-                    // insert image where I want;
+                    // insert weather icon where I want;
                     $('#image-cell').html(setIcon( "weatherImage", 'NULL', weatherObj.icon ));
                     // insert city under temp
                     $('#temp-cell-city p').html(weatherObj.city)
+
+                    // insert content into info panel
+                    $('#box-wind-spd h3').html(weatherObj.wind);
+                    $('#box-humidity-percent h3').html(weatherObj.humidity + '%');
+
+                    // turn time object into a string and get only the time for both sunrise and sunset
+                    var sunrise = weatherObj.sunrise.toString().split(' ')[4].slice(0,-3);
+                    var sunset = weatherObj.sunset.toString().split(' ')[4].slice(0,-3);
+                    // if first number is 0 ignore
+                    sunrise = parseInt(sunrise.charAt(0)) === 0? sunrise.slice(1): sunrise.slice(0, sunrise.length);
+                    sunset = parseInt(sunrise.charAt(0)) === 0? sunset.slice(1): sunset.slice(0, sunset.length);
+                    console.log(weatherObj.sunrise, weatherObj.sunset);
+                    // convert from 24 hour time to normal
+                    var hr = parseInt(sunset.slice(0,2)) // get just first two digits
+                    // if the hour is larger than 12 subtract 12 and add it back to rest of string
+                    sunset = hr > 12? hr - 12 + sunset.slice(2): sunset;
+                    // if search is done the request still comes back based on user timezone not search timezone ... Include the timeZone in description for clarity
+                    $('#box-sunrise-time h3').html(sunrise + ' am');
+                    $('#box-sunset-time h3').html(sunset + ' pm');
+
+                    // fade in info panel with add class jquery
+                    $('.info-card').addClass('animate-fadein');
+
                 }
                 reload(data); // initial load of top data
 
@@ -189,6 +213,8 @@
 
                 // search function to grab new weather data all the information
                 $('input').on('keydown', function(e) {
+                    // remove animated fade in so I can add it again on content load
+                    $('.info-card').removeClass('animate-fadein');
                     if (event.which == 13 || event.keyCode == 13) {
                         var userInput = document.getElementById('sample1').value;
                         var userArray = userInput.split(",");
@@ -215,7 +241,7 @@
                 // grab initial value from dom and convert for celcius version
                 var mTempF = $('#temperature-cell h2').html();
                 var Mc = convert( mTempF );
-                console.log(Mc)
+                console.log(Mc);
 
                 // change temperature on switch
                 $('#switch-1').click(function() {
@@ -241,4 +267,6 @@
         console.log('ERROR');
     }
     navigator.geolocation.getCurrentPosition(success);
+    // remove class on page load
+
 })()
