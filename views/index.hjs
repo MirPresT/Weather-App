@@ -10,7 +10,7 @@
 
 <body>
 
-    <div id="app" class="mdl-shadow--6dp">
+    <div id="app-container" class="mdl-shadow--6dp">
 
         <div id="header" class="">
             <!--search bar-->
@@ -25,7 +25,7 @@
             </form>
 
             <!--box main content-->
-            <div id="main" class="mdl-grid">
+            <div id="main-header-container" class="mdl-grid">
                 <!--<div class="degree"></div>-->
                 <div id='temperature-cell' class='temp-cell'>
 
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <!--responsive tabs-->
+        <!--tabs-->
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
             <div class="mdl-tabs__tab-bar " id="tab-header">
                 <a href="#info-panel" class="mdl-tabs__tab l is-active">Info</a>

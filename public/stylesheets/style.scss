@@ -1,3 +1,7 @@
+/*
+ * Variables for Color Palette
+ */
+
 $dark-blue: #05668d; //rgba(5, 102, 141, 89)
 $blue: #028090; //rgba(2, 128, 144, 100)
 $blue-green: #00a896; //rgba(0, 168, 150, 100)
@@ -6,143 +10,106 @@ $theme-green: #009688;
 $beige: #f0f3bd; //rgba(240, 243, 189, 100)
 $grey: rgb(221, 221, 221);
 
+/*
+ * Defined Mixins
+ *
+ * "Create a Box" "Center-Me" "Animation"
+ */
+
+@mixin animation( $str ) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
 @mixin create-box ($h,$w,$color) {
     height: $h;
     width: $w;
     background-color: $color;;
 }
-
 @mixin center-me() {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) !important;
 }
-
 @mixin center-me-vert() {
     position: absolute;
     top: 50%;
     transform: translateY(-50%) !important;
 }
-
 @mixin center-me-horiz() {
     position: absolute;
     left: 50%;
     transform: translateX(-50%) !important;
 }
 
-// animation Mixins
-@mixin animation-duration( $s ) {
-    -webkit-animation-duration: $s ;
-    -moz-animation-duration: $s;
-    -o-animation-duration: $s;
-    animation-duration: $s ;
-}
-@mixin animation-iteration-count ( $s ) {
-    -webkit-animation-iteration-count: $s ;
-    -moz-animation-iteration-count: $s;
-    -o-animation-iteration-count: $s;
-    animation-iteration-count: $s ;
-}
-@mixin animation-name ( $name ) {
-    -webkit-animation-name: $name ;
-    -moz-animation-name: $name;
-    -o-animation-name: $name;
-    animation-name: $name ;
-}
-@mixin animation-delay ( $n ) {
-    -webkit-animation-delay: $n ;
-    -moz-animation-delay: $n;
-    -o-animation-delay: $n;
-    animation-delay: $n ;
-}
-@mixin animation-fill-mode( $type ) {
-    -webkit-animation-fill-mode: $type ;
-    -moz-animation-fill-mode: $type;
-    -o-animation-fill-mode: $type;
-    animation-fill-mode: $type;
-}
-@mixin animation-direction( $type ) {
-    -webkit-animation-direction: $type ;
-    -moz-animation-direction: $type;
-    -o-animation-direction: $type;
-    animation-direction: $type;
-}
-@mixin animation-timing-function( $type ) {
-    -webkit-animation-timing-function: $type ;
-    -moz-animation-timing-function: $type;
-    -o-animation-timing-function: $type;
-    animation-timing-function: $type;
-}
-// define animations
+/*
+ * Animation Keyframes
+ *
+ * "Windmill Spinner" "fadeIn"
+ */
 
-// spin
-@-webkit-keyframes spin {
-    0%{ -webkit-transform: translate(-50%,-50%);}
-    50% { -webkit-transform: translate(-50%,-50%) rotate(180deg);}
+@keyframes windSpin {
+  0% {transform: translate(-50%,-50%) rotate(0deg)}
+  100% {transform: translate(-50%,-50%) rotate(360deg)}
+}
+@-webkit-keyframes windSpin {
+  0% {transform: translate(-50%,-50%) rotate(0deg)}
+  100% {transform: translate(-50%,-50%) rotate(360deg)}
+}
+@-moz-keyframes windSpin {
+  0% {transform: translate(-50%,-50%) rotate(0deg)}
+  100% {transform: translate(-50%,-50%) rotate(360deg)}
+}
+@-o-keyframes windSpin {
+  0% {transform: translate(-50%,-50%) rotate(0deg)}
+  100% {transform: translate(-50%,-50%) rotate(360deg)}
 }
 
-@-moz-keyframes spin {
-    0%{ -moz-transform: translate(-50%,-50%);}
-    50% { -moz-transform: translate(-50%,-50%) rotate(180deg);}
-}
-
-@-o-keyframes spin {
-    0%{ -o-transform: translate(-50%,-50%);}
-    50% { -o-transform: translate(-50%,-50%) rotate(180deg);}
-}
-
-@keyframes spin {
-    0%{ transform: translate(-50%,-50%);}
-    50% { transform: translate(-50%,-50%) rotate(180deg);}
-    100% { transform: translate(-50%,-50%) rotate(0);}
-}
-
-// Box Fade In
 @-webkit-keyframes fadeIn {
     from{ opacity: 0; }
-    to{opacity: 1; }
+    to{ opacity: 1; }
 }
-
 @-moz-keyframes fadeIn {
     from{ opacity:0; }
     to{ opacity: 1; }
 }
-
 @-o-keyframes fadeIn {
     from{ opacity: 0; }
     to{ opacity: 1; }
 }
-
 @keyframes fadeIn {
     from{ opacity: 0; }
     to{ opacity: 1; }
 }
 
+/*
+ * Background Styles
+ */
 
 body {
     background-color: $grey - 20 !important;
 }
 
-#app {
+/*
+ * App Styling
+ *
+ * "Windmill Spinner" "fadeIn"
+ */
+
+#app-container {
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    @include center-me-horiz();
     background-color: $grey ;
     max-height: 800px;
     height: 95vh;
     width: 600px;
     max-width: 900px;
     min-width: 400px;
-    top:20px;
+    top:30px;
 }
-#header {
-    position: relative;
-    @include create-box(300px, none, $green);
-    z-index: 1;
-    width: 100%;
-}
-
 #search {
     position: relative;
     left: 20px;
@@ -154,19 +121,22 @@ body {
         left: 30px;
     }
 }
-
-#main {
+#header {
+    position: relative;
+    @include create-box(300px, none, $green);
+    z-index: 1;
+    width: 100%;
+}
+#main-header-container {
     @include create-box(50%, 70%, none);
     position: absolute;
     top: 25%;
     left: 50%;
     transform: translateX(-50%);
 }
-
 .temp-cell {
     display:block;
 }
-
 #temperature-cell {
     // background-color: $blue-green;
     position: relative;
@@ -208,7 +178,6 @@ body {
         top: 10px;
     }
 }
-
 #image-cell {
     // background-color: $grey;
     width: 40%;
@@ -219,7 +188,12 @@ body {
     }
 }
 
-// tabs
+/*
+ * Tab / Pannels
+ *
+ * "Header > info > forecast
+ */
+
 #tab-header {
     background-color: $green;
 }
@@ -227,38 +201,32 @@ body {
   color: #61DBB5  !important;
   padding: 0 20.5% !important;
 }
-
 #tab-header .is-active {
   color: $beige !important;
 }
-
-
+// add this class to automate elements on events in jquery ex) .click.addClass
 .animate-fadein{
-    @include animation-name( fadeIn );
-    @include animation-duration( 2000ms );
-    @include animation-iteration-count( 1 );
-    @include animation-timing-function( ease );
-    @include animation-fill-mode( both );
-    @include animation-direction( forward );
+    @include animation(" fadeIn 2000ms ease 1 normal both ");
 }
 
-// tab content
+/*
+ * Tab / Pannels
+ *
+ * "Header > info > forecast
+ */
+
 .info-card {
     @include create-box(100px,100%, none);
     border-bottom: 2px solid $grey - 10;
 }
-
-
-
+// targets all boxes
 .box-info {
     @include create-box(100px, 200px, none);
     display: inline-block;
-
     h3 {
         font-size: 25px;
     }
 }
-
 .box-left {
     float: left;
     position: relative;
@@ -269,12 +237,12 @@ body {
         @include center-me();
     }
 }
+// adjust sizing of times to fit
 .time {
     h3{
     font-size: 20px;
     }
 }
-
 .box-middle {
     position: relative;
     p {
@@ -289,116 +257,12 @@ body {
     }
 }
 
-.box-right {
+.box-right{
     float: right;
     position: relative;
     img {
-        height: 65%;
-    }
-    #tourbine {
-        @include animation-name( spin );
-        @include animation-duration( 1s );
-        @include animation-iteration-count( infinite );
-        @include animation-delay(0);
-        // @include animation-fill-mode(  );
-        @include animation-timing-function( linear );
-    }
-    #tourbine-pole {
-        position: absolute;
-        top: 105px;
-        left: 100px;
-    }
-}
-
-
-
-// tab content
-.forecast-card{
-    @include create-box(110px, 100%, $grey);
-    border-bottom: 2px solid $grey - 10;
-    @include animation-name( fadeIn );
-    @include animation-duration( 2000ms );
-    @include animation-iteration-count( 1 );
-    @include animation-timing-function( ease );
-    @include animation-fill-mode( both );
-    @include animation-direction( forward );
-}
-
-.box{
-    @include create-box(110px, 200px, none);
-    display: inline-block;
-}
-
-.box-temp {
-    float: left;
-    position: relative;
-    h3 {
-        font-family: 'Roboto',sans-serif;
-        font-size: 40px;
-        margin: 0;
-        color: $theme-green;
-        @include center-me();
-    }
-}
-
-.box-date {
-    position: relative;
-    p {
-        font-family: 'Roboto', sans-serif;
-        width: 95%;
-        font-size: 18px;
-        margin: 0px;
-        font-weight: 300;
-        color: black;
-        @include center-me();
-        text-align: center;
-    }
-}
-
-.box-icon {
-    position: relative;
-    float: right;
-    .box-icon-svg {
-        @include center-me();
         height: 60%;
     }
-}
-// button switch
-#switch {
-    position: absolute;
-    bottom: 20px;
-    left: 90%;
-    width: 20px;
-}
-
-// spinner animation
-
-@keyframes windSpin {
-  0% {
-    transform: translate(-50%,-50%) rotate(0deg);
-  }
-  100% {
-     transform: translate(-50%,-50%) rotate(360deg);
-  }
-}
-
-#tSpinner {
-    @include center-me();
-    @include animation-name( windSpin );
-    @include animation-iteration-count(infinite) ;
-    @include animation-timing-function(linear);
-    @include animation-direction(forwards);
-}
-
-#pole {
-    @include center-me-horiz();
-    height: 35%;
-    width: .35em;
-    background-color: $theme-green;
-    border-radius: 40% 40% 0 0;
-    bottom: 0px;
-}
-.box-right{
     #sunrise {
         @include center-me-horiz();
         bottom: 0px;
@@ -412,4 +276,72 @@ body {
         bottom: 0px;
         height: 40%;
     }
+}
+#tSpinner {
+    @include center-me();
+    @include animation( "windSpin linear infinite normal both" );
+}
+
+#pole {
+    @include center-me-horiz();
+    height: 35%;
+    width: .35em;
+    background-color: $theme-green;
+    border-radius: 40% 40% 0 0;
+    bottom: 0px;
+}
+
+// ** Forecast Tab Content
+.forecast-card{
+    @include create-box(110px, 100%, $grey);
+    @include animation( "fadeIn 2000ms ease 1 normal both" );
+    border-bottom: 2px solid $grey - 10;
+}
+.box{
+    @include create-box(110px, 200px, none);
+    display: inline-block;
+}
+.box-temp {
+    float: left;
+    position: relative;
+    h3 {
+        font-family: 'Roboto',sans-serif;
+        font-size: 40px;
+        margin: 0;
+        color: $theme-green;
+        @include center-me();
+    }
+}
+.box-date {
+    position: relative;
+    p {
+        font-family: 'Roboto', sans-serif;
+        width: 95%;
+        font-size: 18px;
+        margin: 0px;
+        font-weight: 300;
+        color: black;
+        @include center-me();
+        text-align: center;
+    }
+}
+.box-icon {
+    position: relative;
+    float: right;
+    .box-icon-svg {
+        @include center-me();
+        height: 60%;
+    }
+}
+
+/*
+ * Switch
+ *
+ */
+
+#switch {
+    position: absolute;
+    bottom: 20px;
+    left: 90%;
+    width: 20px;
 }
