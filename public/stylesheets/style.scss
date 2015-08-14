@@ -85,6 +85,30 @@ $grey: rgb(221, 221, 221);
     to{ opacity: 1; }
 }
 
+@-webkit-keyframes fadeIn {
+    from{ opacity: 0; }
+    to{ opacity: 1; }
+}
+@-moz-keyframes fadeIn {
+    from{ opacity:0; }
+    to{ opacity: 1; }
+}
+@-o-keyframes fadeIn {
+    from{ opacity: 0; }
+    to{ opacity: 1; }
+}
+@keyframes fadeIn {
+    from{ opacity: 0; }
+    to{ opacity: 1; }
+}
+// draw logo animation
+@keyframes draw {
+  from{ fill:none }
+  to {
+      stroke-dashoffset: 0;
+  }
+}
+
 /*
  * Background Styles
  */
@@ -105,8 +129,8 @@ body {
     background-color: $grey ;
     max-height: 800px;
     height: 95vh;
-    width: 600px;
-    max-width: 900px;
+    width: 95%;
+    max-width: 600px;
     min-width: 400px;
     top:30px;
 }
@@ -221,7 +245,7 @@ body {
 }
 // targets all boxes
 .box-info {
-    @include create-box(100px, 200px, none);
+    @include create-box(100px, 33.3%, none);
     display: inline-block;
     h3 {
         font-size: 25px;
@@ -261,44 +285,36 @@ body {
     float: right;
     position: relative;
     img {
-        height: 60%;
-    }
-    #sunrise {
-        @include center-me-horiz();
-        bottom: 0px;
-    }
-    #humidity {
+        height: 55%;
         @include center-me();
-        height: 40%;
     }
-    #sunset {
-        @include center-me-horiz();
-        bottom: 0px;
+    #sunset, #humidity {
         height: 40%;
     }
 }
 #tSpinner {
     @include center-me();
     @include animation( "windSpin linear infinite normal both" );
+    height: 70%;
 }
 
 #pole {
     @include center-me-horiz();
     height: 35%;
-    width: .35em;
+    width: .4em;
     background-color: $theme-green;
-    border-radius: 40% 40% 0 0;
+    border-radius: 50% 50% 0 0;
     bottom: 0px;
 }
 
 // ** Forecast Tab Content
 .forecast-card{
-    @include create-box(110px, 100%, $grey);
+    @include create-box(135px, 100%, $grey);
     @include animation( "fadeIn 2000ms ease 1 normal both" );
     border-bottom: 2px solid $grey - 10;
 }
 .box{
-    @include create-box(110px, 200px, none);
+    @include create-box(135px, 33.3%, none);
     display: inline-block;
 }
 .box-temp {
@@ -310,6 +326,15 @@ body {
         margin: 0;
         color: $theme-green;
         @include center-me();
+    }
+    #forecast-degree {
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        border-radius: 50%;
+        border: 3px solid $theme-green;
+        left: 65%;
+        top: 33%;
     }
 }
 .box-date {
@@ -341,7 +366,45 @@ body {
 
 #switch {
     position: absolute;
-    bottom: 20px;
-    left: 90%;
+    bottom: 10px;
+    left: 93%;
     width: 20px;
+}
+
+#switcher {
+    height: 2em;
+    position: relative;
+    h4 {
+        margin: 0;
+        font-family: "Roboto",sans-serif;
+        font-weight: 600;
+        position: absolute;
+        right: 9%;
+        @include center-me-vert();
+        color: $theme-green;
+    }
+}
+
+
+/*
+ * Credits & Logo
+ *
+ */
+
+#logo {
+    position: absolute;
+    @include center-me-horiz();
+    bottom: 40px;
+    height: 80px;
+    width: 80px;
+    polygon {
+        stroke: $theme-green;
+    }
+}
+#logo:hover {
+    polygon {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: draw 2s linear 1 forwards;
+    }
 }

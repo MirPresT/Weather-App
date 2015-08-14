@@ -113,7 +113,7 @@
                         '01': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-sun.svg'>",
                         'description': 'clear sky'
                     }, {
-                        '02': "<img id='" + htmlId + "' class='" + htmlClass + "' src ='/images/svg-sun-clouds.svg'>",
+                        '02': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-sun-clouds.svg'>",
                         'description': 'few clouds'
                     }, {
                         '03': "<img id='" + htmlId + "'  class='" + htmlClass + "' src='/images/svg-clouds.svg'>",
@@ -128,13 +128,13 @@
                         '10': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-rain.svg'>",
                         'description': 'rain'
                     }, {
-                        '11': "<img id='" + htmlId + "' class='" + htmlClass + "' sr c='/images/svg-lightning.svg'>",
+                        '11': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-lightning.svg'>",
                         'description': 'thunderstorm'
                     }, {
                         '13': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-snow.svg'>",
                         'description': 'snow'
                     }, {
-                        '50': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-sun.svg'>",
+                        '50': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-mist.svg'>",
                         'description': 'mist'
                     }];
                     var imageToReturn;
@@ -274,11 +274,14 @@
                         $('#day-1 .box-temp h3').html(dIc);
                         $('#day-2 .box-temp h3').html(dIIc);
                         $('#day-3 .box-temp h3').html(dIIIc);
+                        // change display text-text
+                        $("#switcher h4").html("C");
                     } else {
                         $('#temperature-cell h2').html(mTempF);
                         $('#day-1 .box-temp h3').html(dIF);
                         $('#day-2 .box-temp h3').html(dIIF);
                         $('#day-3 .box-temp h3').html(dIIIF);
+                        $("#switcher h4").html("F");
                     }
                 });
                 // end success function

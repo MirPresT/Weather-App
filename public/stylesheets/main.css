@@ -51,6 +51,31 @@
     opacity: 0; }
   to {
     opacity: 1; } }
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-o-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes draw {
+  from {
+    fill: none; }
+  to {
+    stroke-dashoffset: 0; } }
 /*
  * Background Styles
  */
@@ -70,8 +95,8 @@ body {
   background-color: #dddddd;
   max-height: 800px;
   height: 95vh;
-  width: 600px;
-  max-width: 900px;
+  width: 95%;
+  max-width: 600px;
   min-width: 400px;
   top: 30px; }
 
@@ -183,7 +208,7 @@ body {
 
 .box-info {
   height: 100px;
-  width: 200px;
+  width: 33.3%;
   background-color: none;
   display: inline-block; }
   .box-info h3 {
@@ -223,23 +248,12 @@ body {
   float: right;
   position: relative; }
   .box-right img {
-    height: 60%; }
-  .box-right #sunrise {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) !important;
-    bottom: 0px; }
-  .box-right #humidity {
+    height: 55%;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) !important;
-    height: 40%; }
-  .box-right #sunset {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) !important;
-    bottom: 0px;
+    transform: translate(-50%, -50%) !important; }
+  .box-right #sunset, .box-right #humidity {
     height: 40%; }
 
 #tSpinner {
@@ -251,20 +265,21 @@ body {
   -moz-animation: windSpin linear infinite normal both;
   -ms-animation: windSpin linear infinite normal both;
   -o-animation: windSpin linear infinite normal both;
-  animation: windSpin linear infinite normal both; }
+  animation: windSpin linear infinite normal both;
+  height: 70%; }
 
 #pole {
   position: absolute;
   left: 50%;
   transform: translateX(-50%) !important;
   height: 35%;
-  width: .35em;
+  width: .4em;
   background-color: #009688;
-  border-radius: 40% 40% 0 0;
+  border-radius: 50% 50% 0 0;
   bottom: 0px; }
 
 .forecast-card {
-  height: 110px;
+  height: 135px;
   width: 100%;
   background-color: #dddddd;
   -webkit-animation: fadeIn 2000ms ease 1 normal both;
@@ -275,8 +290,8 @@ body {
   border-bottom: 2px solid lightgray; }
 
 .box {
-  height: 110px;
-  width: 200px;
+  height: 135px;
+  width: 33.3%;
   background-color: none;
   display: inline-block; }
 
@@ -292,6 +307,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) !important; }
+  .box-temp #forecast-degree {
+    position: absolute;
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    border: 3px solid #009688;
+    left: 65%;
+    top: 33%; }
 
 .box-date {
   position: relative; }
@@ -324,8 +347,42 @@ body {
  */
 #switch {
   position: absolute;
-  bottom: 20px;
-  left: 90%;
+  bottom: 10px;
+  left: 93%;
   width: 20px; }
+
+#switcher {
+  height: 2em;
+  position: relative; }
+  #switcher h4 {
+    margin: 0;
+    font-family: "Roboto",sans-serif;
+    font-weight: 600;
+    position: absolute;
+    right: 9%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) !important;
+    color: #009688; }
+
+/*
+ * Credits & Logo
+ *
+ */
+#logo {
+  position: absolute;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) !important;
+  bottom: 40px;
+  height: 80px;
+  width: 80px; }
+  #logo polygon {
+    stroke: #009688; }
+
+#logo:hover polygon {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2s linear 1 forwards; }
 
 /*# sourceMappingURL=main.css.map */
