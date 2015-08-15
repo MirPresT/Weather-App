@@ -1,4 +1,5 @@
 # Weather App
+####[Live Demo](http://codepen.io/MirPresT/full/oXJOqW) is available on CodePen!
 
 *A weather app created while working through FCC*
 
@@ -17,6 +18,4 @@ Google’s
 #### Icons
 Updating ..
 
-
-* Live preview is not yet on CodePen. Coming Soon.
-* Live preview is not yet nn Raw Git. Coming Soon.
+* Live preview is not yet available via Raw Git. Use link to [CodePen](http://codepen.io/MirPresT/full/oXJOqW).
