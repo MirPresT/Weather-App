@@ -6,8 +6,9 @@
 ####Functionality
 On the initial load of the browser, the app will ask the user if it can access their location. Upon successfully acquiring the location, the app makes an ajax request to OpenWeatherMap.Org for both the current weather and forecast.
 
-Icons are displayed based on information in the successfully acquired json data.
-Clicking the switch at the bottom will switch all values to Celcius.
+Icons are displayed based on information in the successfully acquired json data. The Wind Tourbine spins according to the wind speed of your location or search.
+
+The switch at the bottom changes the temperature scale from Farenheit to Celcius and vice versa.
 
 A search bar is located at the top and can be used to load data from other cities. If the switch is celcius when the search is made then the appropriate temperatures will display. Search e.g. Chicago,US
 
