@@ -18,11 +18,10 @@ A search bar is located at the top and can be used to load data from other citie
 *Most icons used in this project came from the [Noun Project](https://thenounproject.com). Below I have linked to the contributors profiles.*
 
 ##### List of Original Creators .
-* Weather icons by[Tommy Lau](https://thenounproject.com/lch121/).
-* Humidity icon by [Evgeniy Artsebasov](https://thenounproject.com/artsebasov/).
-* Weather Tourbine by [Yorlmar Campos](https://thenounproject.com/Yorlmar%20Campos/).
-* Sunrise and Sunset icons by [Raashid.A](https://thenounproject.com/Raashid/).
+* Weather icons by[Tommy Lau](https://thenounproject.com/lch121/)
+* Sunrise and Sunset icons by [Raashid.A](https://thenounproject.com/Raashid/)
+* Weather Tourbine by [Yorlmar Campos](https://thenounproject.com/Yorlmar%20Campos/)
+* Humidity icon by [Evgeniy Artsebasov](https://thenounproject.com/artsebasov/)
 
 
-
-* To view the live demo and code checkout the project on [CodePen](http://codepen.io/MirPresT/full/oXJOqW).
+To view the live demo and code checkout the project on [CodePen](http://codepen.io/MirPresT/full/oXJOqW).
