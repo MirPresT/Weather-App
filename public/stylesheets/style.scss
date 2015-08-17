@@ -115,6 +115,7 @@ $grey: rgb(221, 221, 221);
 
 body {
     background-color: $grey - 20 !important;
+    // background-color: $beige;
 }
 
 /*
@@ -139,10 +140,8 @@ body {
     left: 20px;
     z-index: 2;
     width: 95%;
-    #search-text {
-        position: absolute;
-        top: 1px;
-        left: 30px;
+    #sample1 {
+        color: $beige;
     }
 }
 #header {
@@ -238,14 +237,16 @@ body {
  *
  * "Header > info > forecast
  */
+#info-panel {
 
+}
 .info-card {
-    @include create-box(100px,100%, none);
+    @include create-box(100px,100%, none); // fix this -------------------------------------------
     border-bottom: 2px solid $grey - 10;
 }
 // targets all boxes
 .box-info {
-    @include create-box(100px, 33.3%, none);
+    @include create-box(100%, 33.3%, none);
     display: inline-block;
     h3 {
         font-size: 25px;
@@ -314,7 +315,7 @@ body {
     border-bottom: 2px solid $grey - 10;
 }
 .box{
-    @include create-box(135px, 33.3%, none);
+    @include create-box(100%, 33.3%, none);
     display: inline-block;
 }
 .box-temp {
@@ -385,7 +386,6 @@ body {
     }
 }
 
-
 /*
  * Credits & Logo
  *
@@ -406,5 +406,29 @@ body {
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
       animation: draw 2s linear 1 forwards;
+    }
+}
+
+@media screen and (max-height:960px) {
+    #logo {
+        position: absolute;
+        bottom: px;
+        left: 90%;
+        margin-bottom: 1em;
+    }
+    .info-card {
+        height: 80px;
+    }
+    .forecast-card {
+        height: 107px;
+    }
+    #app-container {
+        height: 720px;
+        width: 550px;
+    }
+}
+@media screen and (max-width:920px) {
+    #logo {
+        display: none;
     }
 }

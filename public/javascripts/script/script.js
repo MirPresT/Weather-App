@@ -63,7 +63,7 @@
                     $('#temp-cell-city p').html(weatherObj.city)
 
                     // insert content into info panel
-                    $('#box-wind-spd h3').html(weatherObj.wind);
+                    $('#box-wind-spd h3').html(weatherObj.wind + ' mph');
                     $('#box-humidity-percent h3').html(weatherObj.humidity + '%');
 
                     // turn time object into a string and get only the time for both sunrise and sunset

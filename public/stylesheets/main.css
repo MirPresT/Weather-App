@@ -105,10 +105,8 @@ body {
   left: 20px;
   z-index: 2;
   width: 95%; }
-  #search #search-text {
-    position: absolute;
-    top: 1px;
-    left: 30px; }
+  #search #sample1 {
+    color: #f0f3bd; }
 
 #header {
   position: relative;
@@ -207,7 +205,7 @@ body {
   border-bottom: 2px solid lightgray; }
 
 .box-info {
-  height: 100px;
+  height: 100%;
   width: 33.3%;
   background-color: none;
   display: inline-block; }
@@ -290,7 +288,7 @@ body {
   border-bottom: 2px solid lightgray; }
 
 .box {
-  height: 135px;
+  height: 100%;
   width: 33.3%;
   background-color: none;
   display: inline-block; }
@@ -384,5 +382,25 @@ body {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: draw 2s linear 1 forwards; }
+
+@media screen and (max-height: 960px) {
+  #logo {
+    position: absolute;
+    bottom: px;
+    left: 90%;
+    margin-bottom: 1em; }
+
+  .info-card {
+    height: 80px; }
+
+  .forecast-card {
+    height: 107px; }
+
+  #app-container {
+    height: 720px;
+    width: 550px; } }
+@media screen and (max-width: 920px) {
+  #logo {
+    display: none; } }
 
 /*# sourceMappingURL=main.css.map */
