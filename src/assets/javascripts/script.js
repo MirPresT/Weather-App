@@ -7,11 +7,12 @@
       return (navigator.geolocation) ? "ENABLED" : "DISABLED";
     },
     loadApp: function() {
-      (this.geoLocationCheck() === "ENABLED")? success() : failure();
+      (this.geoLocationCheck() === "ENABLED") ? success(): failure();
 
-      function success(){
+      function success() {
         navigator.geolocation.getCurrentPosition(load);
       }
+
       function load(position) {
         var currentDate;
         var userLat = position.coords.latitude;
@@ -97,7 +98,6 @@
                   $('#tSpinner').css("animation-duration", duration);
                 }
                 return b;
-
               }, [0]);
             }
 
@@ -109,31 +109,31 @@
           function setIcon(htmlId, htmlClass, iconId) {
             // match designed icon to provided icon
             var weatherIcons = [{
-              '01': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-sun.svg'>",
+              '01': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-sun.svg'>",
               'description': 'clear sky'
             }, {
-              '02': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-sun-clouds.svg'>",
+              '02': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-sun-clouds.svg'>",
               'description': 'few clouds'
             }, {
-              '03': "<img id='" + htmlId + "'  class='" + htmlClass + "' src='/images/svg-clouds.svg'>",
+              '03': "<img id='" + htmlId + "'  class='" + htmlClass + "' src='src/assets/images/svg-clouds.svg'>",
               'description': 'scattered clouds'
             }, {
-              '04': "<img id='" + htmlId + "'  class='" + htmlClass + "' src='/images/svg-clouds.svg'>",
+              '04': "<img id='" + htmlId + "'  class='" + htmlClass + "' src='src/assets/images/svg-clouds.svg'>",
               'description': 'broken clouds'
             }, {
-              '09': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-rain.svg'>",
+              '09': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-rain.svg'>",
               'description': 'shower rain'
             }, {
-              '10': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-rain.svg'>",
+              '10': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-rain.svg'>",
               'description': 'rain'
             }, {
-              '11': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-lightning.svg'>",
+              '11': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-lightning.svg'>",
               'description': 'thunderstorm'
             }, {
-              '13': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-snow.svg'>",
+              '13': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-snow.svg'>",
               'description': 'snow'
             }, {
-              '50': "<img id='" + htmlId + "' class='" + htmlClass + "' src='/images/svg-mist.svg'>",
+              '50': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-mist.svg'>",
               'description': 'mist'
             }];
             var imageToReturn;
@@ -148,7 +148,7 @@
             return imageToReturn
           }
           // initial forecast api request using lat and lon used on page load
-          var forecast_coord_url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + userLat + "&lon=" + userLon + "&units=imperial" + "APPID=7527372a21655cf99344e83d9c657864";
+          var forecast_coord_url = "http://api.openweathermap.org/data/2.5/forecast?lat=" + userLat + "&lon=" + userLon + "&units=imperial" + "&APPID=7527372a21655cf99344e83d9c657864";
 
           function loadForecast(requestUrl) {
             $.ajax({
@@ -157,16 +157,11 @@
               url: requestUrl,
               success: function(data) {
 
-                // come in later and add aditional
-                // forcast info for back of each card
                 var forcastArr = [];
 
                 var arr = Array(data);
                 arr.map(function(a) {
-                  // console.log(Object.keys(a))
                   a["list"].map(function(b) {
-                    // grab time from json if time === 12 use it
-
                     var date = new Date(b.dt * 1000);
                     var dayOfMonth = date.getDate();
                     var time = date.getHours();
@@ -187,8 +182,8 @@
                         dayOfWeekWord = a[1];
                       }
                     })
-
-                    if (time === 14 && dayOfMonth !== currentDate) {
+                    // we only want to act on parts of information given to us in the list
+                    if (dayOfMonth !== currentDate && time === 13) {
                       var temp = Math.round(b.main.temp);
                       var fullIcon = b.weather[0].icon; // full icon include (d)ay /(n)ight
                       icon = fullIcon.slice(0, -1);
@@ -204,6 +199,7 @@
                   var tempII = convert(forcastArr[1][0]);
                   var tempIII = convert(forcastArr[2][0]);
                 }
+
 
                 $('#day-1 .box-temp h3').html(tempI || forcastArr[0][0]);
                 $('#day-1 .box-date p').html(forcastArr[0][1]);
@@ -243,8 +239,8 @@
               var cityName = userArray[0];
               var countryCode = userArray[1];
               e.preventDefault();
-              var searchUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + countryCode + "&units=imperial";
-              var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "," + countryCode + "&units=imperial";
+              var searchUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + countryCode + "&units=imperial&APPID=7527372a21655cf99344e83d9c657864";
+              var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "," + countryCode + "&units=imperial&APPID=7527372a21655cf99344e83d9c657864";
 
               $.ajax({
                 type: 'GET',
@@ -263,11 +259,18 @@
           // grab initial value from dom and convert for celcius version
           var mTempF = $('#temperature-cell h2').html();
           var Mc = convert(mTempF);
-          console.log(Mc);
 
           // change temperature on switch
           $('#switch-1').click(function() {
             if ($('#switch').hasClass('is-checked')) { // convert to F
+
+              $('#temperature-cell h2').html(mTempF);
+              $('#day-1 .box-temp h3').html(dIF);
+              $('#day-2 .box-temp h3').html(dIIF);
+              $('#day-3 .box-temp h3').html(dIIIF);
+              $("#switcher h4").html("F");
+
+            } else {
               $('#temperature-cell h2').html(Mc);
               // convert forecast temps
               $('#day-1 .box-temp h3').html(dIc);
@@ -275,17 +278,13 @@
               $('#day-3 .box-temp h3').html(dIIIc);
               // change display text-text
               $("#switcher h4").html("C");
-            } else {
-              $('#temperature-cell h2').html(mTempF);
-              $('#day-1 .box-temp h3').html(dIF);
-              $('#day-2 .box-temp h3').html(dIIF);
-              $('#day-3 .box-temp h3').html(dIIIF);
-              $("#switcher h4").html("F");
+
             }
           });
 
         }
       }
+
       function failure() {
         alert("cant access location");
       }
