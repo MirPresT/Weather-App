@@ -1,5 +1,5 @@
 # Weather App
-####[Live Demo](http://codepen.io/MirPresT/full/oXJOqW) is available on CodePen!
+####[View Live App](http://mirprest.github.io/Weather-App/)
 
 *A weather app created while working through FCC*
 
@@ -25,4 +25,4 @@ A search bar is located at the top and can be used to load data from other citie
 * Humidity icon by [Evgeniy Artsebasov](https://thenounproject.com/artsebasov/)
 
 
-To view the live demo and code checkout the project on [CodePen](http://codepen.io/MirPresT/full/oXJOqW).
+To view the live demo and code checkout the live app [here](http://mirprest.github.io/Weather-App/).
