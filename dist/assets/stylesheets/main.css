@@ -16,166 +16,168 @@
     transform: translate(-50%, -50%) rotate(0deg); }
   100% {
     transform: translate(-50%, -50%) rotate(360deg); } }
+
 @-webkit-keyframes windSpin {
   0% {
     transform: translate(-50%, -50%) rotate(0deg); }
   100% {
     transform: translate(-50%, -50%) rotate(360deg); } }
+
 @-moz-keyframes windSpin {
   0% {
     transform: translate(-50%, -50%) rotate(0deg); }
   100% {
     transform: translate(-50%, -50%) rotate(360deg); } }
+
 @-o-keyframes windSpin {
   0% {
     transform: translate(-50%, -50%) rotate(0deg); }
   100% {
     transform: translate(-50%, -50%) rotate(360deg); } }
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
+
 @-moz-keyframes fadeIn {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
+
 @-o-keyframes fadeIn {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
+
 @keyframes fadeIn {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
+
 @-moz-keyframes fadeIn {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
+
 @-o-keyframes fadeIn {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
+
 @keyframes fadeIn {
   from {
     opacity: 0; }
   to {
     opacity: 1; } }
+
 @keyframes draw {
   from {
     fill: none; }
   to {
     stroke-dashoffset: 0; } }
-/*
- * Background Styles
- */
+
 body {
   background-color: #c9c9c9 !important; }
 
-/*
- * App Styling
- *
- * "Windmill Spinner" "fadeIn"
- */
 #app-container {
-  position: relative;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) !important;
-  background-color: #dddddd;
-  max-height: 800px;
-  height: 95vh;
-  width: 95%;
-  max-width: 600px;
-  min-width: 400px;
-  top: 30px; }
+  background-color: white; }
 
-#search {
-  position: relative;
-  left: 20px;
-  z-index: 2;
-  width: 95%; }
-  #search #sample1 {
-    color: #f0f3bd; }
+@media (max-width: 600px) {
+  #app-container {
+    width: 100%;
+    max-width: 600px; } }
+
+@media (min-width: 601px) {
+  #app-container {
+    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    max-width: 600px; } }
 
 #header {
-  position: relative;
-  height: 300px;
-  width: none;
-  background-color: #02c39a;
-  z-index: 1;
-  width: 100%; }
+  background-color: #02c39a; }
+  #header #main-header-container {
+    width: 80%;
+    box-sizing: border-box; }
+    #header #main-header-container #temperature-cell {
+      position: relative; }
+      #header #main-header-container #temperature-cell #temp-cell-number {
+        padding-top: 10px;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: center; }
+        #header #main-header-container #temperature-cell #temp-cell-number h2 {
+          margin: 0;
+          color: #f0f3bd;
+          font-family: 'Roboto',sans-serif;
+          font-weight: bold;
+          display: inline-block;
+          padding: 0;
+          font-size: 1em; }
+          #header #main-header-container #temperature-cell #temp-cell-number h2:after {
+            content: '';
+            display: inline-block;
+            position: relative;
+            border-color: #f0f3bd;
+            border-radius: 50%;
+            height: 0.075em;
+            width: 0.075em;
+            border: 0.1em solid #f0f3bd;
+            vertical-align: top;
+            margin-left: .075em; }
+      #header #main-header-container #temperature-cell #temp-cell-city {
+        width: 100%;
+        text-align: center; }
+        #header #main-header-container #temperature-cell #temp-cell-city p {
+          color: #f0f3bd;
+          font-family: 'Roboto', sans-serif;
+          padding: 5px 0;
+          margin: 0;
+          font-size: .3em;
+          font-weight: 300; }
+    #header #main-header-container #image-cell {
+      box-sizing: border-box;
+      position: relative; }
+      #header #main-header-container #image-cell #weatherImage {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important; }
 
-#main-header-container {
-  height: 50%;
-  width: 70%;
-  background-color: none;
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translateX(-50%); }
-
-.temp-cell {
-  display: block; }
-
-#temperature-cell {
-  position: relative;
-  width: 60%; }
-  #temperature-cell #temp-cell-number {
-    width: 100%;
-    text-align: center; }
-    #temperature-cell #temp-cell-number h2 {
-      color: #f0f3bd;
-      font-size: 110px;
-      font-family: 'Roboto',sans-serif;
-      font-weight: bold;
-      margin: 30px 0px 0px 0px;
-      padding: 15px; }
-  #temperature-cell #temp-cell-city {
-    width: 100%;
-    text-align: center;
+@media (max-width: 700px) {
+  #header {
+    position: relative;
+    height: 150px; }
+    #header #search {
+      display: none; }
+  #main-header-container {
+    font-size: 4rem;
     position: absolute;
-    bottom: 0; }
-    #temperature-cell #temp-cell-city p {
-      color: #f0f3bd;
-      font-size: 20px;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 300;
-      margin: 5px 0px; }
-  #temperature-cell #temp-cell-degree {
-    height: .5em;
-    width: .5em;
-    border-radius: 50%;
-    border: 6px solid #f0f3bd;
+    margin-top: .45em;
     position: absolute;
-    right: 40px;
-    top: 10px; }
-
-#image-cell {
-  width: 40%;
-  position: relative; }
-  #image-cell #weatherImage {
-    position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) !important;
-    height: 100%; }
+    transform: translateX(-50%) !important; }
+    #main-header-container #temperature-cell {
+      width: 50%; }
+    #main-header-container #image-cell {
+      width: 50%; } }
 
-/*
- * Tab / Pannels
- *
- * "Header > info > forecast
- */
 #tab-header {
   background-color: #02c39a; }
 
@@ -193,11 +195,6 @@ body {
   -o-animation:  fadeIn 2000ms ease 1 normal both ;
   animation:  fadeIn 2000ms ease 1 normal both ; }
 
-/*
- * Tab / Pannels
- *
- * "Header > info > forecast
- */
 .info-card {
   height: 100px;
   width: 100%;
@@ -388,17 +385,8 @@ body {
     position: absolute;
     bottom: px;
     left: 90%;
-    margin-bottom: 1em; }
+    margin-bottom: 1em; } }
 
-  .info-card {
-    height: 80px; }
-
-  .forecast-card {
-    height: 107px; }
-
-  #app-container {
-    height: 720px;
-    width: 550px; } }
 @media screen and (max-width: 920px) {
   #logo {
     display: none; } }

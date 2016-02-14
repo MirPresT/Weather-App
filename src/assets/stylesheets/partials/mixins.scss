@@ -1,0 +1,34 @@
+/*
+ * Defined Mixins
+ *
+ * "Create a Box" "Center-Me" "Animation"
+ */
+
+@mixin animation( $str ) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+@mixin create-box ($h,$w,$color) {
+    height: $h;
+    width: $w;
+    background-color: $color;;
+}
+@mixin center-me() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+}
+@mixin center-me-vert() {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) !important;
+}
+@mixin center-me-horiz() {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) !important;
+}

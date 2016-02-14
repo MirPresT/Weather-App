@@ -1,0 +1,32 @@
+// variables
+@import 'partials/vars.scss';
+
+// mixins
+@import 'partials/mixins.scss';
+
+// animations
+@import 'partials/animations.scss';
+
+
+// app and body styles
+@import 'components/app.scss';
+
+
+// header styles
+@import 'components/header.scss';
+
+
+// tabs
+@import 'components/tabs.scss';
+// info page
+@import 'components/info-page.scss';
+// forcast page
+@import 'components/forecast-page.scss';
+
+
+// switch
+@import 'components/switch.scss';
+
+
+// page-footer
+@import 'components/page-footer';

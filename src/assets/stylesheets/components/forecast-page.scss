@@ -1,0 +1,51 @@
+// ** Forecast Tab Content
+.forecast-card{
+    @include create-box(135px, 100%, $grey);
+    @include animation( "fadeIn 2000ms ease 1 normal both" );
+    border-bottom: 2px solid $grey - 10;
+}
+.box{
+    @include create-box(100%, 33.3%, none);
+    display: inline-block;
+}
+.box-temp {
+    float: left;
+    position: relative;
+    h3 {
+        font-family: 'Roboto',sans-serif;
+        font-size: 40px;
+        margin: 0;
+        color: $theme-green;
+        @include center-me();
+    }
+    #forecast-degree {
+        position: absolute;
+        height: 4px;
+        width: 4px;
+        border-radius: 50%;
+        border: 3px solid $theme-green;
+        left: 65%;
+        top: 33%;
+    }
+}
+.box-date {
+    position: relative;
+    p {
+        font-family: 'Roboto', sans-serif;
+        width: 95%;
+        font-size: 18px;
+        margin: 0px;
+        font-weight: 300;
+        color: black;
+        @include center-me();
+        text-align: center;
+    }
+}
+.box-icon {
+    position: relative;
+    float: right;
+    .box-icon-svg {
+        @include center-me();
+        height: 60%;
+    }
+}

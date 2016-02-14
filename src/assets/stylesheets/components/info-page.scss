@@ -1,0 +1,70 @@
+#info-panel {
+
+}
+.info-card {
+    @include create-box(100px,100%, none); // fix this -------------------------------------------
+    border-bottom: 2px solid $grey - 10;
+}
+// targets all boxes
+.box-info {
+    @include create-box(100%, 33.3%, none);
+    display: inline-block;
+    h3 {
+        font-size: 25px;
+    }
+}
+.box-left {
+    float: left;
+    position: relative;
+    h3 {
+        font-family: 'Roboto',sans-serif;
+        margin: 0;
+        color: $theme-green;
+        @include center-me();
+    }
+}
+// adjust sizing of times to fit
+.time {
+    h3{
+    font-size: 20px;
+    }
+}
+.box-middle {
+    position: relative;
+    p {
+        font-family: 'Roboto', sans-serif;
+        width: 95%;
+        font-size: 18px;
+        margin: 0px;
+        font-weight: 300;
+        color: black;
+        @include center-me();
+        text-align: center;
+    }
+}
+
+.box-right{
+    float: right;
+    position: relative;
+    img {
+        height: 55%;
+        @include center-me();
+    }
+    #sunset, #humidity {
+        height: 40%;
+    }
+}
+#tSpinner {
+    @include center-me();
+    @include animation( "windSpin linear infinite normal both" );
+    height: 70%;
+}
+
+#pole {
+    @include center-me-horiz();
+    height: 35%;
+    width: .4em;
+    background-color: $theme-green;
+    border-radius: 50% 50% 0 0;
+    bottom: 0px;
+}

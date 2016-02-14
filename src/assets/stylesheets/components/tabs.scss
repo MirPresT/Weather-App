@@ -1,0 +1,14 @@
+#tab-header {
+    background-color: $green;
+}
+.mdl-tabs__tab {
+  color: #61DBB5  !important;
+  padding: 0 20.5% !important;
+}
+#tab-header .is-active {
+  color: $beige !important;
+}
+// add this class to automate elements on events in jquery ex) .click.addClass
+.animate-fadein{
+    @include animation(" fadeIn 2000ms ease 1 normal both ");
+}

@@ -1,0 +1,25 @@
+/*
+ * Switch
+ *
+ */
+
+#switch {
+    position: absolute;
+    bottom: 10px;
+    left: 93%;
+    width: 20px;
+}
+
+#switcher {
+    height: 2em;
+    position: relative;
+    h4 {
+        margin: 0;
+        font-family: "Roboto",sans-serif;
+        font-weight: 600;
+        position: absolute;
+        right: 9%;
+        @include center-me-vert();
+        color: $theme-green;
+    }
+}

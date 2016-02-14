@@ -1,0 +1,87 @@
+// default styles across all views
+#header {
+  background-color: $green;
+  #main-header-container {
+    width: 80%;
+    box-sizing: border-box;
+    #temperature-cell {
+      position: relative;
+      #temp-cell-number {
+        padding-top: 10px;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: center;
+        h2 {
+          margin: 0;
+          color: $beige;
+          font-family: 'Roboto',sans-serif;
+          font-weight: bold;
+          display: inline-block;
+          padding: 0;
+          font-size: 1em;
+          &:after{
+            content: '';
+            display: inline-block;
+            position: relative;
+            border-color: $beige;
+            border-radius: 50%;
+            height: 0.075em;
+            width: 0.075em;
+            border: 0.1em solid $beige;
+            vertical-align: top;
+            margin-left: .075em;
+          }
+        }
+      }
+      #temp-cell-city {
+        width: 100%;
+        text-align: center;
+        p {
+          color: $beige;
+          font-family: 'Roboto', sans-serif;
+          padding: 5px 0;
+          margin: 0;
+          font-size: .3em;
+          font-weight: 300;
+        }
+      }
+    }
+    #image-cell {
+      box-sizing: border-box;
+      position: relative;
+      #weatherImage {
+        height: 100%;
+        width: 100%;
+        @include center-me();
+      }
+    }
+  }
+}
+
+
+// mobile views
+@media (max-width: 700px) {
+  #header {
+    position: relative;
+    height: 150px;
+    #search {
+      display: none;
+    }
+  }
+  #main-header-container {
+    font-size: 4rem;
+    position: absolute;
+    margin-top: .45em;
+    @include center-me-horiz();
+    #temperature-cell {
+      width: 50%;
+    }
+    #image-cell{
+      width: 50%;
+    }
+  }
+}
+// medium large view
+@media (min-width: 601px) {
+  
+}

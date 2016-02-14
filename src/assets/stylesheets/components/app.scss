@@ -1,0 +1,27 @@
+// background
+body {
+  background-color: $grey - 20 !important;
+  // background-color: $beige;
+}
+
+
+#app-container{
+  background-color: white;
+}
+
+// mobile views
+@media (max-width: 600px) {
+  #app-container {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+// medium large view
+@media (min-width: 601px) {
+  #app-container {
+    position: relative;
+    @include center-me-horiz();
+    max-width: 600px;
+  }
+}

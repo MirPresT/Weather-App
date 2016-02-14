@@ -1,0 +1,34 @@
+/*
+ * Credits & Logo
+ *
+ */
+#logo {
+  position: absolute;
+  @include center-me-horiz();
+  bottom: 40px;
+  height: 80px;
+  width: 80px;
+  polygon {
+    stroke: $theme-green;
+  }
+}
+#logo:hover {
+  polygon {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 2s linear 1 forwards;
+  }
+}
+@media screen and (max-height:960px) {
+  #logo {
+    position: absolute;
+    bottom: px;
+    left: 90%;
+    margin-bottom: 1em;
+  }
+}
+@media screen and (max-width:920px) {
+  #logo {
+    display: none;
+  }
+}
