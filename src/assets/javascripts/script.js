@@ -17,7 +17,7 @@
         var currentDate;
         var userLat = position.coords.latitude;
         var userLon = position.coords.longitude;
-        var url_api = "https://api.openweathermap.org/data/2.5/weather?lat=" +
+        var url_api = "http://api.openweathermap.org/data/2.5/weather?lat=" +
           userLat + "&lon=" + userLon + "&units=imperial" + "&APPID=7527372a21655cf99344e83d9c657864";
 
         $.getJSON(url_api, getJsonCallback);
@@ -239,8 +239,8 @@
               var cityName = userArray[0];
               var countryCode = userArray[1];
               e.preventDefault();
-              var searchUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + countryCode + "&units=imperial&APPID=7527372a21655cf99344e83d9c657864";
-              var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "," + countryCode + "&units=imperial&APPID=7527372a21655cf99344e83d9c657864";
+              var searchUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + countryCode + "&units=imperial&APPID=7527372a21655cf99344e83d9c657864";
+              var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "," + countryCode + "&units=imperial&APPID=7527372a21655cf99344e83d9c657864";
 
               $.ajax({
                 type: 'GET',
