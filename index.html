@@ -4,7 +4,9 @@
 <head>
   <title> Weather App </title>
   <meta charset="utf-8">
+  <meta name="theme-color" content="#02c39a">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" href="dist/assets/stylesheets/libs/material.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="dist/assets/stylesheets/main.css">
@@ -13,29 +15,21 @@
 <body>
 
   <div id="app-container" class="mdl-shadow--6dp">
-
     <div id="header" class="">
-      <!--search bar-->
       <form action="#" id="search">
         <div class="mdl-textfield mdl-js-textfield textfield-demo">
           <input class="mdl-textfield__input" type="text" id="sample1" />
           <label class="mdl-textfield__label" for="sample1">
-            <!-- <i class="material-icons">search</i> -->
             Search ex: London,Uk
           </label>
         </div>
       </form>
 
-      <!--box main content-->
       <div id="main-header-container" class="mdl-grid">
-        <!--<div class="degree"></div>-->
         <div id='temperature-cell' class='temp-cell'>
-
           <div id='temp-cell-number'>
-            <div id="temp-cell-degree"><!-- degree symbol for temp --></div>
             <h2> <!-- insert temperature --> </h2>
           </div>
-          <!-- location goes here -->
           <div id="temp-cell-city">
             <p></p>
           </div>
@@ -145,8 +139,9 @@
     </div>
 
     <!--F - C switch-->
-    <div id="switcher" class="mdl-grid">
+    <div id="switcher" class="">
       <h4>F</h4>
+      <p id="website-link"><a href="http://terrellvest.com" target="_blank">TerrellVest.com</a></p>
       <label id="switch" class="mdl-switch mdl-js-switch" for="switch-1">
         <input type="checkbox" id="switch-1" class="mdl-switch__input" />
         <span class="mdl-switch__label"></span>

@@ -2,12 +2,25 @@
  * Credits & Logo
  *
  */
+#website-link {
+  @include center-me();
+  a {
+    color: darken($grey, 20%);
+    font-family: "Roboto",sans-serif;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    color: $blue !important;
+  }
+}
+
+
 #logo {
   position: absolute;
   @include center-me-horiz();
   bottom: 40px;
   height: 80px;
   width: 80px;
+  left: 90%;
   polygon {
     stroke: $theme-green;
   }
@@ -17,14 +30,6 @@
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
     animation: draw 2s linear 1 forwards;
-  }
-}
-@media screen and (max-height:960px) {
-  #logo {
-    position: absolute;
-    bottom: px;
-    left: 90%;
-    margin-bottom: 1em;
   }
 }
 @media screen and (max-width:920px) {

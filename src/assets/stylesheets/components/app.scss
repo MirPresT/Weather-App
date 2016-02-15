@@ -1,11 +1,12 @@
 // background
 body {
-  background-color: $grey - 20 !important;
+  background-color: $grey !important;
   // background-color: $beige;
 }
 
 
 #app-container{
+  overflow: hidden;
   background-color: white;
 }
 
@@ -14,6 +15,8 @@ body {
   #app-container {
     width: 100%;
     max-width: 600px;
+    // max-height: 736px;
+    min-height: 568px;
   }
 }
 
@@ -21,7 +24,10 @@ body {
 @media (min-width: 601px) {
   #app-container {
     position: relative;
-    @include center-me-horiz();
+    @include center-me();
+    width: 90%;
+    height: 90vh;
     max-width: 600px;
+    min-width: 320px;
   }
 }

@@ -19,7 +19,7 @@
           display: inline-block;
           padding: 0;
           font-size: 1em;
-          &:after{
+          &:after {
             content: '';
             display: inline-block;
             position: relative;
@@ -29,7 +29,7 @@
             width: 0.075em;
             border: 0.1em solid $beige;
             vertical-align: top;
-            margin-left: .075em;
+            margin-left: 0.075em;
           }
         }
       }
@@ -41,7 +41,7 @@
           font-family: 'Roboto', sans-serif;
           padding: 5px 0;
           margin: 0;
-          font-size: .3em;
+          font-size: 0.3em;
           font-weight: 300;
         }
       }
@@ -57,13 +57,11 @@
     }
   }
 }
-
-
 // mobile views
 @media (max-width: 700px) {
   #header {
     position: relative;
-    height: 150px;
+    height: 22.8vh;
     #search {
       display: none;
     }
@@ -71,17 +69,47 @@
   #main-header-container {
     font-size: 4rem;
     position: absolute;
-    margin-top: .45em;
+    margin-top: 0.45em;
     @include center-me-horiz();
     #temperature-cell {
       width: 50%;
     }
-    #image-cell{
+    #image-cell {
       width: 50%;
     }
   }
 }
+
+
 // medium large view
 @media (min-width: 601px) {
-  
+  #header {
+    position: relative;
+    height: calc(0.228 * 90vh);
+    #search {
+      display: none;
+    }
+  }
+  #main-header-container {
+    height: 140px;
+    font-size: 6rem;
+    position: absolute;
+    margin-top: 0.40em;
+    @include center-me-horiz();
+    #temperature-cell {
+      height: 100%;
+      width: 60%;
+      position: relative;
+      #temp-cell-number {
+        position: relative;
+        padding: 0px;
+        h2 {
+          line-height: 1em;
+        }
+      }
+    }
+    #image-cell {
+      width: 39%;
+    }
+  }
 }

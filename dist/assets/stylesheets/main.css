@@ -90,23 +90,29 @@
     stroke-dashoffset: 0; } }
 
 body {
-  background-color: #c9c9c9 !important; }
+  background-color: #dddddd !important; }
 
 #app-container {
+  overflow: hidden;
   background-color: white; }
 
 @media (max-width: 600px) {
   #app-container {
     width: 100%;
-    max-width: 600px; } }
+    max-width: 600px;
+    min-height: 568px; } }
 
 @media (min-width: 601px) {
   #app-container {
     position: relative;
     position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%) !important;
-    max-width: 600px; } }
+    transform: translate(-50%, -50%) !important;
+    width: 90%;
+    height: 90vh;
+    max-width: 600px;
+    min-width: 320px; } }
 
 #header {
   background-color: #02c39a; }
@@ -138,7 +144,7 @@ body {
             width: 0.075em;
             border: 0.1em solid #f0f3bd;
             vertical-align: top;
-            margin-left: .075em; }
+            margin-left: 0.075em; }
       #header #main-header-container #temperature-cell #temp-cell-city {
         width: 100%;
         text-align: center; }
@@ -147,7 +153,7 @@ body {
           font-family: 'Roboto', sans-serif;
           padding: 5px 0;
           margin: 0;
-          font-size: .3em;
+          font-size: 0.3em;
           font-weight: 300; }
     #header #main-header-container #image-cell {
       box-sizing: border-box;
@@ -163,13 +169,13 @@ body {
 @media (max-width: 700px) {
   #header {
     position: relative;
-    height: 150px; }
+    height: 22.8vh; }
     #header #search {
       display: none; }
   #main-header-container {
     font-size: 4rem;
     position: absolute;
-    margin-top: .45em;
+    margin-top: 0.45em;
     position: absolute;
     left: 50%;
     transform: translateX(-50%) !important; }
@@ -178,11 +184,44 @@ body {
     #main-header-container #image-cell {
       width: 50%; } }
 
-#tab-header {
-  background-color: #02c39a; }
+@media (min-width: 601px) {
+  #header {
+    position: relative;
+    height: calc(0.228 * 90vh); }
+    #header #search {
+      display: none; }
+  #main-header-container {
+    height: 140px;
+    font-size: 6rem;
+    position: absolute;
+    margin-top: 0.40em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) !important; }
+    #main-header-container #temperature-cell {
+      height: 100%;
+      width: 60%;
+      position: relative; }
+      #main-header-container #temperature-cell #temp-cell-number {
+        position: relative;
+        padding: 0px; }
+        #main-header-container #temperature-cell #temp-cell-number h2 {
+          line-height: 1em; }
+    #main-header-container #image-cell {
+      width: 39%; } }
+
+.mdl-tabs {
+  margin-top: -1px; }
 
 .mdl-tabs__tab {
-  color: #61DBB5  !important;
+  height: 7.2vh;
+  line-height: 7.2vh; }
+
+.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active:after {
+  background-color: #009688; }
+
+.mdl-tabs__tab {
+  color: #61DBB5 !important;
   padding: 0 20.5% !important; }
 
 #tab-header .is-active {
@@ -195,166 +234,203 @@ body {
   -o-animation:  fadeIn 2000ms ease 1 normal both ;
   animation:  fadeIn 2000ms ease 1 normal both ; }
 
-.info-card {
-  height: 100px;
-  width: 100%;
-  background-color: none;
-  border-bottom: 2px solid lightgray; }
+@media (max-width: 600px) {
+  #tab-header {
+    height: 7.2vh;
+    background-color: #02c39a; }
+    #tab-header .mdl-tabs__tab {
+      height: 7.2vh;
+      line-height: 7.2vh; } }
 
-.box-info {
-  height: 100%;
-  width: 33.3%;
-  background-color: none;
-  display: inline-block; }
-  .box-info h3 {
-    font-size: 25px; }
+@media (min-width: 601px) {
+  #tab-header {
+    height: calc(0.072 * 90vh);
+    background-color: #02c39a; }
+    #tab-header .mdl-tabs__tab {
+      height: calc(0.072 * 90vh);
+      line-height: calc(0.072 * 90vh); } }
 
-.box-left {
-  float: left;
-  position: relative; }
-  .box-left h3 {
-    font-family: 'Roboto',sans-serif;
-    margin: 0;
-    color: #009688;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important; }
+#info-panel {
+  background-color: white;
+  height: 70vh; }
+  #info-panel .info-card {
+    height: 22%;
+    width: 100%;
+    border-bottom: 1px solid #dedede;
+    box-sizing: border-box; }
+  #info-panel .box-info {
+    height: 100%;
+    width: 33.3%;
+    display: inline-block; }
+    #info-panel .box-info .time h3 {
+      font-size: 20px; }
+  #info-panel .box-left {
+    float: left;
+    position: relative; }
+    #info-panel .box-left h3 {
+      font-size: 22px;
+      line-height: 24px;
+      text-align: center;
+      font-family: 'Roboto',sans-serif;
+      margin: 0;
+      color: #009688;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) !important; }
+  #info-panel .box-middle {
+    position: relative; }
+    #info-panel .box-middle p {
+      font-family: 'Roboto', sans-serif;
+      width: 95%;
+      font-size: 18px;
+      margin: 0;
+      font-weight: 300;
+      color: black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) !important;
+      text-align: center; }
+  #info-panel .box-right {
+    float: right;
+    position: relative; }
+    #info-panel .box-right img {
+      height: 55%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) !important; }
+    #info-panel .box-right #sunset,
+    #info-panel .box-right #humidity {
+      height: 40%; }
+    #info-panel .box-right #tSpinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) !important;
+      -webkit-animation: windSpin linear infinite normal both;
+      -moz-animation: windSpin linear infinite normal both;
+      -ms-animation: windSpin linear infinite normal both;
+      -o-animation: windSpin linear infinite normal both;
+      animation: windSpin linear infinite normal both;
+      height: 70%; }
+    #info-panel .box-right #pole {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) !important;
+      height: 35%;
+      width: 0.4em;
+      background-color: #009688;
+      border-radius: 50% 50% 0 0;
+      bottom: 0; }
 
-.time h3 {
-  font-size: 20px; }
+@media (max-width: 600px) {
+  #info-panel .info-card .box-info img {
+    height: 44%; }
+  #info-panel .info-card .box-info #sunset,
+  #info-panel .info-card .box-info #humidity {
+    height: 33%; } }
 
-.box-middle {
-  position: relative; }
-  .box-middle p {
-    font-family: 'Roboto', sans-serif;
-    width: 95%;
-    font-size: 18px;
-    margin: 0px;
-    font-weight: 300;
-    color: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
-    text-align: center; }
+@media (min-width: 601px) {
+  #info-panel {
+    height: calc(0.70 * 90vh); }
+    #info-panel .info-card .box-info img {
+      height: 44%; }
+    #info-panel .info-card .box-info #sunset,
+    #info-panel .info-card .box-info #humidity {
+      height: 33%; } }
 
-.box-right {
-  float: right;
-  position: relative; }
-  .box-right img {
-    height: 55%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important; }
-  .box-right #sunset, .box-right #humidity {
-    height: 40%; }
-
-#tSpinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) !important;
-  -webkit-animation: windSpin linear infinite normal both;
-  -moz-animation: windSpin linear infinite normal both;
-  -ms-animation: windSpin linear infinite normal both;
-  -o-animation: windSpin linear infinite normal both;
-  animation: windSpin linear infinite normal both;
-  height: 70%; }
-
-#pole {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) !important;
-  height: 35%;
-  width: .4em;
-  background-color: #009688;
-  border-radius: 50% 50% 0 0;
-  bottom: 0px; }
-
-.forecast-card {
-  height: 135px;
-  width: 100%;
-  background-color: #dddddd;
+#forecast-panel .forecast-card {
+  height: 29.33333%;
   -webkit-animation: fadeIn 2000ms ease 1 normal both;
   -moz-animation: fadeIn 2000ms ease 1 normal both;
   -ms-animation: fadeIn 2000ms ease 1 normal both;
   -o-animation: fadeIn 2000ms ease 1 normal both;
   animation: fadeIn 2000ms ease 1 normal both;
-  border-bottom: 2px solid lightgray; }
+  border-bottom: 1px solid #dedede;
+  box-sizing: border-box; }
+  #forecast-panel .forecast-card .box {
+    width: 33.33%;
+    height: 100%;
+    display: inline-block; }
+  #forecast-panel .forecast-card .box-temp {
+    float: left;
+    position: relative; }
+    #forecast-panel .forecast-card .box-temp h3 {
+      font-family: 'Roboto',sans-serif;
+      font-size: 2em;
+      margin: 0;
+      color: #009688;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) !important; }
+  #forecast-panel .forecast-card .box-date {
+    position: relative; }
+    #forecast-panel .forecast-card .box-date p {
+      font-family: 'Roboto', sans-serif;
+      width: 100%;
+      font-size: 1em;
+      margin: 0;
+      font-weight: 300;
+      color: black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) !important;
+      text-align: center; }
+  #forecast-panel .forecast-card .box-icon {
+    position: relative;
+    float: right; }
+    #forecast-panel .forecast-card .box-icon .box-icon-svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) !important;
+      height: 50%; }
 
-.box {
-  height: 100%;
-  width: 33.3%;
-  background-color: none;
-  display: inline-block; }
+@media (max-width: 700px) {
+  #forecast-panel {
+    height: 70vh; }
+    #forecast-panel .forecast-card .box-date p {
+      font-size: 1.25em; } }
 
-.box-temp {
-  float: left;
-  position: relative; }
-  .box-temp h3 {
-    font-family: 'Roboto',sans-serif;
-    font-size: 40px;
-    margin: 0;
-    color: #009688;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important; }
-  .box-temp #forecast-degree {
-    position: absolute;
-    height: 4px;
-    width: 4px;
-    border-radius: 50%;
-    border: 3px solid #009688;
-    left: 65%;
-    top: 33%; }
+@media (min-width: 601px) and (min-height: 800px) {
+  #forecast-panel {
+    font-size: 1.5rem;
+    height: calc(0.70 * 90vh); } }
 
-.box-date {
-  position: relative; }
-  .box-date p {
-    font-family: 'Roboto', sans-serif;
-    width: 95%;
-    font-size: 18px;
-    margin: 0px;
-    font-weight: 300;
-    color: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
-    text-align: center; }
+.mdl-switch.is-checked .mdl-switch__thumb {
+  background-color: #009688; }
 
-.box-icon {
-  position: relative;
-  float: right; }
-  .box-icon .box-icon-svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
-    height: 60%; }
+.mdl-switch.is-checked .mdl-switch__track {
+  background-color: #009688;
+  opacity: .3; }
 
 /*
  * Switch
  *
  */
-#switch {
-  position: absolute;
-  bottom: 10px;
-  left: 93%;
-  width: 20px; }
-
 #switcher {
-  height: 2em;
-  position: relative; }
+  background-color: #f7f7f7;
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(0.12 * 70vh);
+  transform: translateY(-100%); }
+  #switcher #switch {
+    width: 20px;
+    right: 1rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) !important; }
   #switcher h4 {
     margin: 0;
     font-family: "Roboto",sans-serif;
     font-weight: 600;
     position: absolute;
-    right: 9%;
+    right: 4rem;
     position: absolute;
     top: 50%;
     transform: translateY(-50%) !important;
@@ -364,6 +440,18 @@ body {
  * Credits & Logo
  *
  */
+#website-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important; }
+  #website-link a {
+    color: #aaaaaa;
+    font-family: "Roboto",sans-serif;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    color: #028090 !important; }
+
 #logo {
   position: absolute;
   position: absolute;
@@ -371,7 +459,8 @@ body {
   transform: translateX(-50%) !important;
   bottom: 40px;
   height: 80px;
-  width: 80px; }
+  width: 80px;
+  left: 90%; }
   #logo polygon {
     stroke: #009688; }
 
@@ -379,13 +468,6 @@ body {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: draw 2s linear 1 forwards; }
-
-@media screen and (max-height: 960px) {
-  #logo {
-    position: absolute;
-    bottom: px;
-    left: 90%;
-    margin-bottom: 1em; } }
 
 @media screen and (max-width: 920px) {
   #logo {

@@ -1,70 +1,107 @@
 #info-panel {
-
-}
-.info-card {
-    @include create-box(100px,100%, none); // fix this -------------------------------------------
-    border-bottom: 2px solid $grey - 10;
-}
-// targets all boxes
-.box-info {
-    @include create-box(100%, 33.3%, none);
+  background-color: white;
+  height: 70vh;
+  // row of boxes
+  .info-card {
+    height: 22%;
+    width: 100%;
+    border-bottom: 1px solid lighten($grey, .5);;
+    box-sizing: border-box;
+  }
+  // targets all boxes
+  .box-info {
+    height: 100%; width: 33.3%;
     display: inline-block;
-    h3 {
-        font-size: 25px;
+    // adjust sizing of time in time boxes
+    .time {
+      h3 {
+        font-size: 20px;
+      }
     }
-}
-.box-left {
+  }
+  .box-left {
     float: left;
     position: relative;
     h3 {
-        font-family: 'Roboto',sans-serif;
-        margin: 0;
-        color: $theme-green;
-        @include center-me();
+      font-size: 22px;
+      line-height: 24px;
+      text-align: center;
+      font-family: 'Roboto',sans-serif;
+      margin: 0;
+      color: $theme-green;
+      @include center-me();
     }
-}
-// adjust sizing of times to fit
-.time {
-    h3{
-    font-size: 20px;
-    }
-}
-.box-middle {
+  }
+  .box-middle {
     position: relative;
     p {
-        font-family: 'Roboto', sans-serif;
-        width: 95%;
-        font-size: 18px;
-        margin: 0px;
-        font-weight: 300;
-        color: black;
-        @include center-me();
-        text-align: center;
+      font-family: 'Roboto', sans-serif;
+      width: 95%;
+      font-size: 18px;
+      margin: 0;
+      font-weight: 300;
+      color: black;
+      @include center-me();
+      text-align: center;
     }
-}
-
-.box-right{
+  }
+  .box-right {
     float: right;
     position: relative;
     img {
-        height: 55%;
-        @include center-me();
+      height: 55%;
+      @include center-me();
     }
-    #sunset, #humidity {
-        height: 40%;
+    #sunset,
+    #humidity {
+      height: 40%;
     }
-}
-#tSpinner {
-    @include center-me();
-    @include animation( "windSpin linear infinite normal both" );
-    height: 70%;
+    #tSpinner {
+      @include center-me();
+      @include animation( "windSpin linear infinite normal both" );
+      height: 70%;
+    }
+    #pole {
+      @include center-me-horiz();
+      height: 35%;
+      width: 0.4em;
+      background-color: $theme-green;
+      border-radius: 50% 50% 0 0;
+      bottom: 0;
+    }
+  }
 }
 
-#pole {
-    @include center-me-horiz();
-    height: 35%;
-    width: .4em;
-    background-color: $theme-green;
-    border-radius: 50% 50% 0 0;
-    bottom: 0px;
+// mobile view
+@media (max-width: 600px){
+  #info-panel{
+    .info-card{
+      .box-info {
+        img{
+          height: 44%;
+        }
+        #sunset,
+        #humidity {
+          height: 33%;
+        }
+      }
+    }
+  }
+}
+// medium large view
+@media (min-width: 601px){
+  #info-panel{
+    height: calc(0.70 * 90vh );
+    .info-card{
+      .box-info {
+        img{
+          height: 44%;
+        }
+        #sunset,
+        #humidity {
+          height: 33%;
+        }
+      }
+    }
+  }
 }

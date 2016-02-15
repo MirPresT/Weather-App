@@ -1,0 +1,8 @@
+{
+  "short_name": "Weather App",
+  "name": "Current Weather and Forecasts",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#02c39a"
+}

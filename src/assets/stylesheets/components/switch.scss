@@ -1,25 +1,35 @@
+// overide mdl styles
+.mdl-switch.is-checked .mdl-switch__thumb {
+  background-color: $theme-green;
+}
+.mdl-switch.is-checked .mdl-switch__track {
+  background-color: $theme-green;
+  opacity: .3;
+}
+
 /*
  * Switch
  *
  */
-
-#switch {
-    position: absolute;
-    bottom: 10px;
-    left: 93%;
-    width: 20px;
-}
-
 #switcher {
-    height: 2em;
-    position: relative;
-    h4 {
-        margin: 0;
-        font-family: "Roboto",sans-serif;
-        font-weight: 600;
-        position: absolute;
-        right: 9%;
-        @include center-me-vert();
-        color: $theme-green;
-    }
+  background-color: lighten($grey,10%);
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(0.12 * 70vh);
+  transform: translateY(-100%);
+  #switch {
+    width: 20px;
+    right: 1rem;
+    @include center-me-vert();
+  }
+  h4 {
+    margin: 0;
+    font-family: "Roboto",sans-serif;
+    font-weight: 600;
+    position: absolute;
+    right: 4rem;
+    @include center-me-vert();
+    color: $theme-green;
+  }
 }
