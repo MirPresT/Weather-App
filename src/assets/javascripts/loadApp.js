@@ -103,11 +103,20 @@ module.exports = function(position){
       const threeDayForecast = days.filter( (day,index) => {
         return index > 0 && index < 4
       })
-      console.log(threeDayForecast, this.forecastPanel.children);
       const dayElems = this.forecastPanel.children;
-      // {temp , day of week and number, icon} X 3
       for(var i = 0; i < dayElems.length; i++){
-        console.log(dayElems[i]);
+        let boxes = dayElems[i].children;
+        for(var x = 0; x < boxes.length; x++){
+          const box = boxes[x];
+          // set temp
+          if (box.children[0] !== undefined ) {
+            if (box.children[0].tagName === "H3"){
+              box.children[0].innerHTML = Math.round(threeDayForecast[i].temperatureMax)
+              console.log(threeDayForecast[i]);
+            }
+          }
+
+        }
       }
 
     }
