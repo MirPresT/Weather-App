@@ -3,12 +3,16 @@ module.exports = function(position){
 
   var app = {
     start: function(){
+      this.cacheDom();
       var { coords:{ latitude:lat, longitude:lon } } = position;
       // Get location name then Get current weather and forecast
       var gettingLocationName = new Promise( this.getLocationName.bind(this,lat,lon) )
       var gettingWeather = new Promise( this.getWeatherAndForecast.bind(this,lat,lon) )
 
       var tasks = Promise.all([gettingLocationName,gettingWeather]).then(this.handleJSON.bind(this))
+    },
+    cacheDom: function(){
+      this.forecastPanel = document.querySelector("#forecast-panel");
     },
     handleJSON: function(response){
       // big destructuing of data .. just have to take a second to follow it
@@ -33,7 +37,7 @@ module.exports = function(position){
       // sending in payloads with only relevant info
       this.setHeaderInfo({locationName,temperature,icon});
       this.setInfoTab({windSpeed,humidity,sunriseTime,sunsetTime});
-      this.setForecast();
+      this.setForecast({"days":response[1].daily.data});
     },
     getLocationName: function(lat,lon,res,rej){
       // get the current location ie neighborhood or city based on lat & long using google maps api
@@ -95,8 +99,17 @@ module.exports = function(position){
 
     },
     setForecast: function(data){
-      // need
+      const days = data.days;
+      const threeDayForecast = days.filter( (day,index) => {
+        return index > 0 && index < 4
+      })
+      console.log(threeDayForecast, this.forecastPanel.children);
+      const dayElems = this.forecastPanel.children;
       // {temp , day of week and number, icon} X 3
+      for(var i = 0; i < dayElems.length; i++){
+        console.log(dayElems[i]);
+      }
+
     }
   }
 
