@@ -86,7 +86,7 @@ module.exports = function(position){
       var info = this.infoPanel.children;
       var infoToPlace = [
         windSpeed + ' <span id="mph">mph</span>',
-        humidity*100 + ' <span id="percent">%</span>',
+        Math.round(humidity * 100) + ' <span id="percent">%</span>',
         formatTime(sunriseTime).time +" "+ formatTime(sunriseTime).when ,
         formatTime(sunsetTime).time +" "+ formatTime(sunsetTime).when
       ];
