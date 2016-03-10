@@ -85,10 +85,10 @@ module.exports = function(position){
       let {windSpeed,humidity,sunriseTime,sunsetTime} = data;
       var info = this.infoPanel.children;
       var infoToPlace = [
-        windSpeed + ' <span id="mph">mph</span>',
-        Math.round(humidity * 100) + ' <span id="percent">%</span>',
-        formatTime(sunriseTime).time +" "+ formatTime(sunriseTime).when ,
-        formatTime(sunsetTime).time +" "+ formatTime(sunsetTime).when
+      `${Math.round(windSpeed)}<span id="mph">mph</span>`,
+        `${Math.round(humidity * 100)}<span id="percent">%</span>`,
+        `${formatTime(sunriseTime).time}<span id="period">${formatTime(sunriseTime).when}</span>`,
+        `${formatTime(sunsetTime).time}<span id="period">${formatTime(sunsetTime).when}</span>`
       ];
       var counter = 0;
       for(var i = 0; i < info.length; i++){

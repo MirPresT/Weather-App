@@ -5,7 +5,7 @@
   .info-card {
     height: 22%;
     width: 100%;
-    border-bottom: 1px solid lighten($grey, .5);;
+    border-bottom: 1px solid rgba(220,220,220,.3);
     box-sizing: border-box;
   }
   // targets all boxes
@@ -31,6 +31,9 @@
       color: $theme-green;
       @include center-me();
     }
+    #mph, #percent, #period{
+      margin-left: .75rem;
+    }
   }
   .box-middle {
     position: relative;
@@ -40,7 +43,8 @@
       font-size: 18px;
       margin: 0;
       font-weight: 300;
-      color: black;
+      color: rgba(40,40,40,1);
+      letter-spacing: 1px;
       @include center-me();
       text-align: center;
     }
@@ -83,6 +87,13 @@
         #sunset,
         #humidity {
           height: 33%;
+        }
+        #mph, #percent, #period{
+          margin-left: .4rem;
+          font-size: 1rem;
+        }
+        p{
+          color: rgba(40,40,40,.6);
         }
       }
     }

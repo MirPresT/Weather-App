@@ -282,7 +282,7 @@ body {
   #info-panel .info-card {
     height: 22%;
     width: 100%;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid rgba(220, 220, 220, 0.3);
     box-sizing: border-box; }
   #info-panel .box-info {
     height: 100%;
@@ -304,6 +304,8 @@ body {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) !important; }
+    #info-panel .box-left #mph, #info-panel .box-left #percent, #info-panel .box-left #period {
+      margin-left: .75rem; }
   #info-panel .box-middle {
     position: relative; }
     #info-panel .box-middle p {
@@ -312,7 +314,8 @@ body {
       font-size: 18px;
       margin: 0;
       font-weight: 300;
-      color: black;
+      color: #282828;
+      letter-spacing: 1px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -356,7 +359,12 @@ body {
     height: 44%; }
   #info-panel .info-card .box-info #sunset,
   #info-panel .info-card .box-info #humidity {
-    height: 33%; } }
+    height: 33%; }
+  #info-panel .info-card .box-info #mph, #info-panel .info-card .box-info #percent, #info-panel .info-card .box-info #period {
+    margin-left: .4rem;
+    font-size: 1rem; }
+  #info-panel .info-card .box-info p {
+    color: rgba(40, 40, 40, 0.6); } }
 
 @media (min-width: 601px) {
   #info-panel {
