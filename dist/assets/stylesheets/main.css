@@ -95,6 +95,15 @@ body {
 #app-container {
   overflow: hidden;
   background-color: white; }
+  #app-container.loading {
+    background: linear-gradient(357deg, #028090 0%, #02c39a 100%); }
+
+#loaded-app.inactive {
+  visibility: hidden;
+  background-color: #02c39a; }
+
+#loaded-app.active {
+  visibility: visible; }
 
 @media (max-width: 600px) {
   #app-container {
@@ -113,6 +122,23 @@ body {
     height: 90vh;
     max-width: 600px;
     min-width: 320px; } }
+
+.spinner-container {
+  position: absolute;
+  display: inline-block;
+  width: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; }
+  .spinner-container #loading-spinner {
+    display: inline-block;
+    z-index: 1;
+    height: 60px;
+    width: 60px; }
+  .spinner-container .mdl-spinner__circle {
+    border-width: 6px;
+    border-color: #f0f3bd; }
 
 #header {
   background-color: #02c39a; }

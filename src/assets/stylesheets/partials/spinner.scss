@@ -1,0 +1,20 @@
+.spinner-container{
+  position: absolute;
+  display: inline-block;
+  width: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  #loading-spinner{
+    display: inline-block;
+    z-index: 1;
+    height: 60px;
+    width: 60px;
+  }
+  .mdl-spinner__circle{
+    border-width: 6px;
+    border-color: $beige;
+  }
+
+}

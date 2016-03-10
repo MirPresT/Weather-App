@@ -12,7 +12,11 @@ module.exports = function(position){
       var tasks = Promise.all([gettingLocationName,gettingWeather]).then(this.handleJSON.bind(this))
     },
     cacheDom: function(){
+      this.header = document.querySelector('#header');
+      this.headerTempCell = document.querySelector('#temp-cell-number h2');
+      this.infoPanel = document.querySelector('#info-panel');
       this.forecastPanel = document.querySelector("#forecast-panel");
+
     },
     handleJSON: function(response){
       // big destructuing of data .. just have to take a second to follow it
@@ -74,10 +78,28 @@ module.exports = function(position){
     },
     setHeaderInfo: function(data){
       const {temperature:temp,locationName:name,icon} = data;
-      console.log('Header: ',temp,name,icon);
+      this.headerTempCell.innerHTML = Math.round(temp);
+       $('#image-cell').html(this.setIcon('weatherImage',null,icon));
     },
     setInfoTab: function(data){
       let {windSpeed,humidity,sunriseTime,sunsetTime} = data;
+      var info = this.infoPanel.children;
+      var infoToPlace = [
+        windSpeed + ' <span id="mph">mph</span>',
+        humidity*100 + ' <span id="percent">%</span>',
+        formatTime(sunriseTime).time +" "+ formatTime(sunriseTime).when ,
+        formatTime(sunsetTime).time +" "+ formatTime(sunsetTime).when
+      ];
+      var counter = 0;
+      for(var i = 0; i < info.length; i++){
+          var boxes = info[i].children;
+          for (var x = 0; x < boxes.length; x++) {
+              if(boxes[x].classList.contains('box-left')){
+                boxes[x].firstElementChild.innerHTML = infoToPlace[counter];
+                counter++;
+              }
+          }
+      }
 
       function formatTime(unixTime){
         var time = new Date( unixTime * 1000).toString().split(' ')[4].slice(0, -3);
@@ -93,10 +115,24 @@ module.exports = function(position){
           return {when:'pm',time:time};
         }
       }
-      console.log(
-        'Info-Tab: ',windSpeed,humidity * 100, formatTime(sunriseTime),formatTime(sunsetTime)
-      );
 
+      function setWind(spd) {
+        [
+          [20, 3],
+          [40, 1.5],
+          [60, 1],
+          [80, .8],
+          [100, .5]
+        ].reduce(function(a, b) {
+          if (spd > a[0] && spd <= b[0]) {
+            var duration = b[1] + "s";
+            $('#tSpinner').css("animation-duration", duration);
+          }
+          return b;
+        }, [0]);
+      }
+
+      setWind(windSpeed);
     },
     setForecast: function(data){
       const days = data.days;
@@ -108,16 +144,58 @@ module.exports = function(position){
         let boxes = dayElems[i].children;
         for(var x = 0; x < boxes.length; x++){
           const box = boxes[x];
-          // set temp
           if (box.children[0] !== undefined ) {
             if (box.children[0].tagName === "H3"){
               box.children[0].innerHTML = Math.round(threeDayForecast[i].temperatureMax)
-              console.log(threeDayForecast[i]);
             }
           }
 
         }
       }
+
+    },
+    setIcon: function(htmlId, htmlClass, str) {
+      // match designed icon to provided icon
+      var weatherIcons = [{
+        'ids': ['clear-night','clear-day'],
+        'tag': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-sun.svg'>",
+        'description': 'clear sky'
+      }, {
+        'ids': ['partly-cloudy-day'],
+        'tag': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-sun-clouds.svg'>",
+        'description': 'few clouds'
+      }, {
+        'ids': ['partly-cloudy-night','cloudy'],
+        'tag': "<img id='" + htmlId + "'  class='" + htmlClass + "' src='src/assets/images/svg-clouds.svg'>",
+        'description': 'cloudy'
+      }, {
+        'ids': ['rain','hail'],
+        'tag': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-rain.svg'>",
+        'description': 'shower rain'
+      },{
+        'ids': ['thunderstorm'],
+        'tag': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-lightning.svg'>",
+        'description': 'thunderstorm'
+      }, {
+        'ids': ['hail'],
+        'tag': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-snow.svg'>",
+        'description': 'snow'
+      }, {
+        'ids': ['fog','wind'],
+        'tag': "<img id='" + htmlId + "' class='" + htmlClass + "' src='src/assets/images/svg-mist.svg'>",
+        'description': 'mist'
+      }];
+      //  iterate over array of image tag objects into single url
+
+      for (var i = 0; i < weatherIcons.length; i++) {
+        var obj = weatherIcons[i];
+        var idMatches = obj.ids.filter(function(IDstr){
+          return str === IDstr;
+        });
+        if (idMatches.length >= 1){
+          return obj.tag;
+        }
+      };
 
     }
   }

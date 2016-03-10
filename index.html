@@ -34,147 +34,156 @@
 <body>
 
   <div id="app-container" class="mdl-shadow--6dp">
-    <div id="header" class="">
-      <form action="#" id="search">
-        <div class="mdl-textfield mdl-js-textfield textfield-demo">
-          <input class="mdl-textfield__input" type="text" id="sample1" />
-          <label class="mdl-textfield__label" for="sample1">
-            Search ex: London,Uk
-          </label>
-        </div>
-      </form>
-
-      <div id="main-header-container" class="mdl-grid">
-        <div id='temperature-cell' class='temp-cell'>
-          <div id='temp-cell-number'>
-            <h2> <!-- insert temperature --> </h2>
-          </div>
-          <div id="temp-cell-city">
-            <p></p>
-          </div>
-        </div>
-        <div id='image-cell' class=''>
-          <!-- image goes here on load -->
-        </div>
-      </div>
+    <!-- MDL Spinner Component with Single Color -->
+    <div class="spinner-container">
+        <div id="loading-spinner" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner"></div>
+        <!-- add is active  -->
     </div>
 
-    <!--tabs-->
-    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-      <div class="mdl-tabs__tab-bar " id="tab-header">
-        <a href="#info-panel" class="mdl-tabs__tab l is-active">Info</a>
-        <a href="#forecast-panel" class="mdl-tabs__tab">Forecast</a>
-      </div>
+    <div id="loaded-app" class="active">
+      <div id="header" class="">
+        <form action="#" id="search">
+          <div class="mdl-textfield mdl-js-textfield textfield-demo">
+            <input class="mdl-textfield__input" type="text" id="sample1" />
+            <label class="mdl-textfield__label" for="sample1">
+              Search ex: London,Uk
+            </label>
+          </div>
+        </form>
 
-      <div class="mdl-tabs__panel is-active" id="info-panel">
-        <!--panel one content-->
-        <div id="" class="info-card">
-          <div id="box-wind-spd" class="box-left box-info">
-            <h3></h3>
+        <div id="main-header-container" class="mdl-grid">
+          <div id='temperature-cell' class='temp-cell'>
+            <div id='temp-cell-number'>
+              <h2> <!-- insert temperature --> </h2>
+            </div>
+            <div id="temp-cell-city">
+              <p></p>
+            </div>
           </div>
-          <div id="box-wind-text" class="box-middle box-info">
-            <p>Wind Speed</p>
-          </div>
-          <div id="box-wind-icon" class="box-right box-info">
-            <img id="tSpinner" src="src/assets/images/Tourbine-Spinner.png" alt="" />
-            <div id="pole"></div>
-          </div>
-        </div>
-        <div id="" class="info-card">
-          <div id="box-humidity-percent" class="box-left box-info">
-            <h3></h3>
-          </div>
-          <div id="box-humidity-text" class="box-middle box-info">
-            <p>Humidity</p>
-          </div>
-          <div id="box-wind-icon" class="box-right box-info">
-            <img src="src/assets/images/humidity.png" id="humidity" alt="" />
-          </div>
-        </div>
-        <div id="" class="info-card">
-          <div id="box-sunrise-time" class="box-left box-info time">
-            <h3></h3>
-          </div>
-          <div id="box-sunrise-text" class="box-middle box-info">
-            <p>Sunrise</p>
-          </div>
-          <div id="box-sunrise-icon" class="box-right box-info">
-            <img id="sunrise" src="src/assets/images/sunrise.png" alt="" />
-          </div>
-        </div>
-        <div id="" class="info-card">
-          <div id="box-sunset-time" class="box-left box-info time">
-            <h3></h3>
-          </div>
-          <div id="box-sunset-text" class="box-middle box-info">
-            <p>Sunset</p>
-          </div>
-          <div id="box-wind-icon" class="box-right box-info">
-            <img src="src/assets/images/sunset.png" id="sunset" alt="" />
+          <div id='image-cell' class=''>
+            <!-- image goes here on load -->
           </div>
         </div>
       </div>
 
-      <div class="mdl-tabs__panel" id="forecast-panel">
-        <!--panel two content boxes-->
-        <div id="day-1" class=" forecast-card">
-          <div class="box box-temp">
-            <h3></h3>
-            <div id="forecast-degree"></div>
-          </div>
-          <div class="box box-date">
-            <p></p>
-          </div>
-          <div class="box box-icon">
+      <!--tabs-->
+      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+        <div class="mdl-tabs__tab-bar " id="tab-header">
+          <a href="#info-panel" class="mdl-tabs__tab l is-active">Info</a>
+          <a href="#forecast-panel" class="mdl-tabs__tab">Forecast</a>
+        </div>
 
+        <div class="mdl-tabs__panel is-active" id="info-panel">
+          <!--panel one content-->
+          <div id="" class="info-card">
+            <div id="box-wind-spd" class="box-left box-info">
+              <h3></h3>
+            </div>
+            <div id="box-wind-text" class="box-middle box-info">
+              <p>Wind Speed</p>
+            </div>
+            <div id="box-wind-icon" class="box-right box-info">
+              <img id="tSpinner" src="src/assets/images/Tourbine-Spinner.png" alt="" />
+              <div id="pole"></div>
+            </div>
+          </div>
+          <div id="" class="info-card">
+            <div id="box-humidity-percent" class="box-left box-info">
+              <h3></h3>
+            </div>
+            <div id="box-humidity-text" class="box-middle box-info">
+              <p>Humidity</p>
+            </div>
+            <div id="box-wind-icon" class="box-right box-info">
+              <img src="src/assets/images/humidity.png" id="humidity" alt="" />
+            </div>
+          </div>
+          <div id="" class="info-card">
+            <div id="box-sunrise-time" class="box-left box-info time">
+              <h3></h3>
+            </div>
+            <div id="box-sunrise-text" class="box-middle box-info">
+              <p>Sunrise</p>
+            </div>
+            <div id="box-sunrise-icon" class="box-right box-info">
+              <img id="sunrise" src="src/assets/images/sunrise.png" alt="" />
+            </div>
+          </div>
+          <div id="" class="info-card">
+            <div id="box-sunset-time" class="box-left box-info time">
+              <h3></h3>
+            </div>
+            <div id="box-sunset-text" class="box-middle box-info">
+              <p>Sunset</p>
+            </div>
+            <div id="box-wind-icon" class="box-right box-info">
+              <img src="src/assets/images/sunset.png" id="sunset" alt="" />
+            </div>
           </div>
         </div>
-        <div id="day-2" class="forecast-card">
-          <div class="box box-temp">
-            <h3></h3>
-            <div id="forecast-degree"></div>
-          </div>
-          <div class="box box-date">
-            <p></p>
-          </div>
-          <div class="box box-icon">
 
+        <div class="mdl-tabs__panel" id="forecast-panel">
+          <!--panel two content boxes-->
+          <div id="day-1" class=" forecast-card">
+            <div class="box box-temp">
+              <h3></h3>
+              <div id="forecast-degree"></div>
+            </div>
+            <div class="box box-date">
+              <p></p>
+            </div>
+            <div class="box box-icon">
+
+            </div>
+          </div>
+          <div id="day-2" class="forecast-card">
+            <div class="box box-temp">
+              <h3></h3>
+              <div id="forecast-degree"></div>
+            </div>
+            <div class="box box-date">
+              <p></p>
+            </div>
+            <div class="box box-icon">
+
+            </div>
+          </div>
+          <div id="day-3" class="forecast-card">
+            <div class="box box-temp">
+              <h3></h3>
+              <div id="forecast-degree"></div>
+            </div>
+            <div class="box box-date">
+              <p></p>
+            </div>
+            <div class="box box-icon">
+
+            </div>
           </div>
         </div>
-        <div id="day-3" class="forecast-card">
-          <div class="box box-temp">
-            <h3></h3>
-            <div id="forecast-degree"></div>
-          </div>
-          <div class="box box-date">
-            <p></p>
-          </div>
-          <div class="box box-icon">
 
-          </div>
-        </div>
       </div>
 
-    </div>
-
-    <!--F - C switch-->
-    <div id="switcher" class="">
-      <h4>F</h4>
-      <p id="website-link"><a href="http://terrellvest.com" target="_blank">TerrellVest.com</a></p>
-      <label id="switch" class="mdl-switch mdl-js-switch" for="switch-1">
-        <input type="checkbox" id="switch-1" class="mdl-switch__input" />
-        <span class="mdl-switch__label"></span>
-      </label>
+      <!--F - C switch-->
+      <div id="switcher" class="">
+        <h4>F</h4>
+        <p id="website-link"><a href="http://terrellvest.com" target="_blank">TerrellVest.com</a></p>
+        <label id="switch" class="mdl-switch mdl-js-switch" for="switch-1">
+          <input type="checkbox" id="switch-1" class="mdl-switch__input" />
+          <span class="mdl-switch__label"></span>
+        </label>
+      </div>
     </div>
 
   </div>
+  <!-- other stuff -->
   <a href="https://github.com/MirPresT" target="_blank">
     <svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="204.333px" height="163.5px" viewBox="49.5 121.5 204.333 163.5" enable-background="new 49.5 121.5 204.333 163.5" xml:space="preserve">
       <polygon fill="none" stroke="#000000" stroke-width="4.0464" points="55.391,123.95 249.25,123.95 235.027,149.618 166.466,149.618
             166.466,202.771 184.404,174.075 219.739,174.075 153.229,280.49 86.724,174.075 122.062,174.075 139.66,201.599 139.66,149.405
             71.437,149.405 " />
     </svg>
-    <a>
+  </a>
       <script type="text/javascript" src="./src/assets/javascripts/libs/jquery-1.11.3.min.js"></script>
       <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
       <script type="text/javascript" src="./dist/assets/javascripts/bundle.js"></script>
