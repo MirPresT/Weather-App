@@ -1,5 +1,7 @@
+import moment from 'moment';
+
 // load app
-module.exports = function(position){
+function loadApp(position){
 
   var app = {
     start: function(){
@@ -19,7 +21,7 @@ module.exports = function(position){
 
     },
     handleJSON: function(response){
-      // big destructuing of data .. just have to take a second to follow it
+      // big destructuring of data .. just have to take a second to follow it
       // this function also passes the required information to smaller functions to update ui
       const [
         locationName,
@@ -87,8 +89,8 @@ module.exports = function(position){
       var infoToPlace = [
       `${Math.round(windSpeed)}<span id="mph">mph</span>`,
         `${Math.round(humidity * 100)}<span id="percent">%</span>`,
-        `${formatTime(sunriseTime).time}<span id="period">${formatTime(sunriseTime).when}</span>`,
-        `${formatTime(sunsetTime).time}<span id="period">${formatTime(sunsetTime).when}</span>`
+        `${moment.unix(sunriseTime).format('h:mm')}<span id="period">am</span>`,
+        `${moment.unix(sunsetTime).format('h:mm')}<span id="period">pm</span>`
       ];
       var counter = 0;
       for(var i = 0; i < info.length; i++){
@@ -99,21 +101,6 @@ module.exports = function(position){
                 counter++;
               }
           }
-      }
-
-      function formatTime(unixTime){
-        var time = new Date( unixTime * 1000).toString().split(' ')[4].slice(0, -3);
-        // if there is a zero remove it
-        const hr = parseInt(time.slice(0, 2));
-        if(parseInt(time.charAt(0)) === 0) {
-          time = time.slice(1);
-          // time is in the am
-          return {when:'am',time:time};
-        } else if ( hr > 12) {
-          time = hr - 12 + time.slice(2);
-          // time is in the pm
-          return {when:'pm',time:time};
-        }
       }
 
       function setWind(spd) {
@@ -144,10 +131,18 @@ module.exports = function(position){
         let boxes = dayElems[i].children;
         for(var x = 0; x < boxes.length; x++){
           const box = boxes[x];
-          if (box.children[0] !== undefined ) {
+          if( box.classList.contains('box-date')){
+            var unixTime = threeDayForecast[i].time;
+            box.children[0].innerHTML = moment.unix(unixTime).format('dddd Do');
+          }
+          if ( box.classList.contains('box-temp') ) {
             if (box.children[0].tagName === "H3"){
               box.children[0].innerHTML = Math.round(threeDayForecast[i].temperatureMax)
             }
+          }
+          if( box.classList.contains('box-icon')){
+            var icon = this.setIcon( null,'box-icon-svg',threeDayForecast[i].icon );
+            box.innerHTML = icon;
           }
 
         }
@@ -202,3 +197,5 @@ module.exports = function(position){
 
   app.start();
 }
+
+export {loadApp};

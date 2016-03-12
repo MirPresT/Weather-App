@@ -1,4 +1,5 @@
-import module_loadApp from './loadApp.js';
+import {loadApp} from './loadApp.js';
+
 
   const index = {
     init: function() {
@@ -35,7 +36,7 @@ import module_loadApp from './loadApp.js';
       console.error("This browser does not support geoLocation. Please update your browser.");
     },
     loadApp: function(position){
-      module_loadApp(position);
+      loadApp(position);
     }
   }
   index.init();
