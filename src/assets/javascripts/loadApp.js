@@ -5,11 +5,13 @@ function loadApp(position){
 
   var app = {
     start: function(){
+      this.progressBar = document.querySelector('#loading-progressBar');
+      this.updateProgressBar = this.updateProgress();
       this.cacheDom();
       var { coords:{ latitude:lat, longitude:lon } } = position;
       // Get location name then Get current weather and forecast
-      var gettingLocationName = new Promise( this.getLocationName.bind(this,lat,lon) )
-      var gettingWeather = new Promise( this.getWeatherAndForecast.bind(this,lat,lon) )
+      var gettingLocationName = new Promise( this.getLocationName.bind(this,lat,lon) );
+      var gettingWeather = new Promise( this.getWeatherAndForecast.bind(this,lat,lon) );
 
       var tasks = Promise.all([gettingLocationName,gettingWeather]).then(this.handleJSON.bind(this))
     },
@@ -17,8 +19,8 @@ function loadApp(position){
       this.header = document.querySelector('#header');
       this.headerTempCell = document.querySelector('#temp-cell-number h2');
       this.infoPanel = document.querySelector('#info-panel');
-      this.forecastPanel = document.querySelector("#forecast-panel");
-
+      this.forecastPanel = document.querySelector('#forecast-panel');
+      this.loadedApp = document.querySelector('#loaded-app');
     },
     handleJSON: function(response){
       // big destructuring of data .. just have to take a second to follow it
@@ -42,8 +44,31 @@ function loadApp(position){
 
       // sending in payloads with only relevant info
       this.setHeaderInfo({locationName,temperature,icon});
+      this.updateProgressBar.next();
       this.setInfoTab({windSpeed,humidity,sunriseTime,sunsetTime});
+      this.updateProgressBar.next();
       this.setForecast({"days":response[1].daily.data});
+      this.updateProgressBar.next(); // lass call
+      var genObject = this.updateProgressBar.next();
+
+      (genObject.done)? this.revealApp(): console.ERROR('generator function for progress bar isnt done yet');
+
+    },
+    revealApp: function(){
+      window.setTimeout(function(){
+        this.progressBar.remove();
+        this.loadedApp.className = "active";
+      }.bind(this),500)
+    },
+    updateProgress: function*(){
+      let progress = 0;
+      let counter = 0;
+      while(progress < 100){
+        progress +=20; // the progress will be updated 5 times
+        counter++;
+        console.log(counter);
+        yield this.progressBar.MaterialProgress.setProgress(progress);
+      }
     },
     getLocationName: function(lat,lon,res,rej){
       // get the current location ie neighborhood or city based on lat & long using google maps api
@@ -60,12 +85,13 @@ function loadApp(position){
           rej()
         } else if (data.status === "OK") {
           console.log('successful location found using google\n');
+          this.updateProgressBar.next();
           res(data.results[0].formatted_address)
         } else {
           console.log('other error..',data.status);
           rej(data);
         }
-      })
+      }.bind(this))
     },
     getWeatherAndForecast: function(lat,lon,res,rej){
       var baseUrl = 'https://api.forecast.io/forecast';
@@ -74,8 +100,9 @@ function loadApp(position){
       var url_api = baseUrl + '/' + forecastKey + '/' + lat + ',' + lon + clBk;
 
       $.getJSON(url_api, function(data){
+        this.updateProgressBar.next();
         res(data);
-      });
+      }.bind(this));
 
     },
     setHeaderInfo: function(data){
@@ -147,7 +174,6 @@ function loadApp(position){
 
         }
       }
-
     },
     setIcon: function(htmlId, htmlClass, str) {
       // match designed icon to provided icon

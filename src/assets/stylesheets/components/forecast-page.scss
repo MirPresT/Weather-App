@@ -7,6 +7,7 @@
     @include animation( "fadeIn 2000ms ease 1 normal both" );
     border-bottom: 1px solid lighten($grey, .5);
     box-sizing: border-box;
+    background-color: white;
     .box {
       width: 33.33%;
       height: 100%;

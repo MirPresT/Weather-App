@@ -1,20 +1,26 @@
-.spinner-container{
+.loader-container{
   position: absolute;
   display: inline-block;
-  width: 100px;
+  width: 60%;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
   text-align: center;
-  #loading-spinner{
+  #loading-progressBar{
     display: inline-block;
-    z-index: 1;
-    height: 60px;
-    width: 60px;
+    width: 100%;
   }
-  .mdl-spinner__circle{
-    border-width: 6px;
-    border-color: $beige;
+  .mdl-progress>.progressbar {
+    background-color: $beige;
+    border-radius: 5px;
+  }
+  .mdl-progress>.bufferbar {
+    background: rgba(240, 243, 189, .3) !important;
+    border-radius: 5px;
+  }
+  .mdl-progress {
+    height: 7px;
+    border-radius: 7px;
   }
 
 }

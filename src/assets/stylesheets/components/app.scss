@@ -7,18 +7,18 @@ body {
 
 #app-container{
   overflow: hidden;
-  background-color: white;
-  &.loading{
-    background: linear-gradient(357deg, rgba(2,128,144,1) 0%, rgba(2,195,154,1) 100%);
-  }
+  // background: linear-gradient(357deg, rgba(2,128,144,1) 0%, rgba(2,195,154,1) 100%);
+  background-color: $green;
 }
 #loaded-app{
   &.inactive{
     visibility: hidden;
     background-color: $green;
+    z-index: 10;
   }
   &.active{
     visibility: visible;
+    background-color: white;
   }
 }
 

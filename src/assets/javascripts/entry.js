@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import {loadApp} from './loadApp.js';
 
 
@@ -8,12 +9,12 @@ import {loadApp} from './loadApp.js';
     beginLocationCheck: function() {
       // check if the browser allows geolocation
       var geolocationIsAvailable = (navigator.geolocation) ? true : false;
-
       // attempt to get current position
       if (geolocationIsAvailable){
         var optionsObj = {enableHighAccuracy:true};
         // takes a success function, an error function, and an options obj
-        navigator.geolocation.getCurrentPosition(this.loadApp,this.getGeoError,optionsObj);
+        console.log('message ensuring users to enable location');
+        navigator.geolocation.getCurrentPosition(this.loadApp.bind(this),this.getGeoError,optionsObj);
       } else {
         this.browserSupportError();
       }
@@ -36,7 +37,15 @@ import {loadApp} from './loadApp.js';
       console.error("This browser does not support geoLocation. Please update your browser.");
     },
     loadApp: function(position){
+      this.insertLoadSpinner();
       loadApp(position);
+    },
+    insertLoadSpinner: function(){
+      var progressBar = document.createElement('div');
+      progressBar.className = 'mdl-progress mdl-js-progress';
+      progressBar.setAttribute('id','loading-progressBar');
+      componentHandler.upgradeElement(progressBar);
+      var test = document.querySelector('.loader-container').appendChild(progressBar);
     }
   }
   index.init();
