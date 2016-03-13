@@ -160,7 +160,7 @@ function loadApp(position){
           const box = boxes[x];
           if( box.classList.contains('box-date')){
             var unixTime = threeDayForecast[i].time;
-            box.children[0].innerHTML = moment.unix(unixTime).format('dddd Do');
+            box.children[0].innerHTML = moment.unix(unixTime).format('ddd Do');
           }
           if ( box.classList.contains('box-temp') ) {
             if (box.children[0].tagName === "H3"){

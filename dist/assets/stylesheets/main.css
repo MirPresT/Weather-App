@@ -419,15 +419,17 @@ body {
     #forecast-panel .forecast-card .box-date p {
       font-family: 'Roboto', sans-serif;
       width: 100%;
-      font-size: 1.5rem;
       margin: 0;
-      font-weight: 300;
       color: black;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) !important;
-      text-align: center; }
+      text-align: center;
+      font-size: 18px;
+      font-weight: 300;
+      color: #282828;
+      letter-spacing: 1px; }
   #forecast-panel .forecast-card .box-icon {
     position: relative;
     float: right; }

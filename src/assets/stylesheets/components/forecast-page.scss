@@ -40,12 +40,14 @@
       p {
         font-family: 'Roboto', sans-serif;
         width: 100%;
-        font-size: 1.5rem;
         margin: 0;
-        font-weight: 300;
         color: black;
         @include center-me();
         text-align: center;
+        font-size: 18px;
+        font-weight: 300;
+        color: rgba(40,40,40,1);
+        letter-spacing: 1px;
       }
     }
     .box-icon {
