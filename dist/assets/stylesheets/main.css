@@ -444,7 +444,8 @@ body {
   #forecast-panel {
     height: 70vh; }
     #forecast-panel .forecast-card .box-date p {
-      font-size: 1.25em; } }
+      font-size: 1.25em;
+      color: rgba(40, 40, 40, 0.6); } }
 
 @media (min-width: 601px) and (min-height: 800px) {
   #forecast-panel {
@@ -498,9 +499,10 @@ body {
   #website-link a {
     color: #aaaaaa;
     font-family: "Roboto",sans-serif;
+    font-weight: 300;
+    font-size: 14px;
     letter-spacing: 1px;
-    text-decoration: underline;
-    color: #028090 !important; }
+    color: #02c39a; }
 
 #logo {
   position: absolute;

@@ -8,6 +8,7 @@ function loadApp(position){
       this.progressBar = document.querySelector('#loading-progressBar');
       this.updateProgressBar = this.updateProgress();
       this.cacheDom();
+      this.bindEvents();
       var { coords:{ latitude:lat, longitude:lon } } = position;
       // Get location name then Get current weather and forecast
       var gettingLocationName = new Promise( this.getLocationName.bind(this,lat,lon) );
@@ -20,7 +21,38 @@ function loadApp(position){
       this.headerTempCell = document.querySelector('#temp-cell-number h2');
       this.infoPanel = document.querySelector('#info-panel');
       this.forecastPanel = document.querySelector('#forecast-panel');
+      this.forecastTemps = document.querySelectorAll('.box-temp h3');
       this.loadedApp = document.querySelector('#loaded-app');
+      this.switch = document.querySelector('#switch-1');
+      this.switchLetter = document.querySelector('#switcher h4');
+    },
+    bindEvents: function(){
+      this.switch.addEventListener('click', function(e){
+        e.srcElement.checked? this.switchTemps('c') : this.switchTemps('f');
+      }.bind(this))
+    },
+    switchTemps: function(temp){
+      var temps = this.forecastTemps;
+
+      if( temp === 'c'){
+        this.switchLetter.innerHTML = 'C';
+        this.headerTempCell.innerHTML = this.toCelcius(parseInt(this.headerTempCell.textContent));
+        for(var i = 0; i < temps.length; i++){
+          temps[i].innerHTML = this.toCelcius(parseInt(temps[i].textContent));
+        }
+      }else {
+        this.switchLetter.innerHTML = 'F';
+        this.headerTempCell.innerHTML = this.toFahrenheit(parseInt(this.headerTempCell.textContent));
+        for(var i = 0; i < temps.length; i++){
+          temps[i].innerHTML = this.toFahrenheit(parseInt(temps[i].textContent));
+        }
+      }
+    },
+    toCelcius: function(val){
+      return Math.round( (val - 32) / 1.8 );
+    },
+    toFahrenheit: function(val){
+      return Math.round((val * 1.8) + 32);
     },
     handleJSON: function(response){
       // big destructuring of data .. just have to take a second to follow it
@@ -66,7 +98,6 @@ function loadApp(position){
       while(progress < 100){
         progress +=20; // the progress will be updated 5 times
         counter++;
-        console.log(counter);
         yield this.progressBar.MaterialProgress.setProgress(progress);
       }
     },

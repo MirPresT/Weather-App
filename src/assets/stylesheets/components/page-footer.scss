@@ -7,9 +7,10 @@
   a {
     color: darken($grey, 20%);
     font-family: "Roboto",sans-serif;
+    font-weight: 300;
+    font-size: 14px;
     letter-spacing: 1px;
-    text-decoration: underline;
-    color: $blue !important;
+    color: $green;
   }
 }
 
