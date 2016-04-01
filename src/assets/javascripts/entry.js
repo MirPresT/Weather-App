@@ -4,6 +4,8 @@ import {loadApp} from './loadApp.js';
 
   const index = {
     init: function() {
+      this.preText = document.getElementById('.loader-container');
+      this.preText.innerHTML = "<h2>Verifying location is available...</h2>";
       this.beginLocationCheck();
     },
     beginLocationCheck: function() {
@@ -13,7 +15,6 @@ import {loadApp} from './loadApp.js';
       if (geolocationIsAvailable){
         var optionsObj = {enableHighAccuracy:true};
         // takes a success function, an error function, and an options obj
-        console.log('message ensuring users to enable location');
         navigator.geolocation.getCurrentPosition(this.loadApp.bind(this),this.getGeoError,optionsObj);
       } else {
         this.browserSupportError();
@@ -36,6 +37,7 @@ import {loadApp} from './loadApp.js';
       console.error("This browser does not support geoLocation. Please update your browser.");
     },
     loadApp: function(position){
+      var parent = this.preText.parentElement.removeChild(this.preText);
       this.insertLoadSpinner();
       loadApp(position);
     },
