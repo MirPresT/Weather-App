@@ -20,7 +20,7 @@
   transform: translateY(-100%);
   #switch {
     width: 20px;
-    right: 1rem;
+    right: 2rem;
     @include center-me-vert();
   }
   h4 {
@@ -28,7 +28,7 @@
     font-family: "Roboto",sans-serif;
     font-weight: 600;
     position: absolute;
-    right: 4rem;
+    right: 5rem;
     @include center-me-vert();
     color: $theme-green;
   }

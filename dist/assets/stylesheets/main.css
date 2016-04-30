@@ -92,6 +92,13 @@
 body {
   background-color: #dddddd !important; }
 
+#location-text {
+  color: white;
+  font-family: "Roboto",sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 1.5rem; }
+
 #app-container {
   overflow: hidden;
   background-color: #02c39a; }
@@ -472,7 +479,7 @@ body {
   transform: translateY(-100%); }
   #switcher #switch {
     width: 20px;
-    right: 1rem;
+    right: 2rem;
     position: absolute;
     top: 50%;
     transform: translateY(-50%) !important; }
@@ -481,7 +488,7 @@ body {
     font-family: "Roboto",sans-serif;
     font-weight: 600;
     position: absolute;
-    right: 4rem;
+    right: 5rem;
     position: absolute;
     top: 50%;
     transform: translateY(-50%) !important;

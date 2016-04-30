@@ -4,8 +4,8 @@ import {loadApp} from './loadApp.js';
 
   const index = {
     init: function() {
-      this.preText = document.getElementById('.loader-container');
-      this.preText.innerHTML = "<h2>Verifying location is available...</h2>";
+      this.loaderCont = document.querySelector('.loader-container');
+      this.loaderCont.innerHTML = "<h2 id='location-text'>Verifying location is available...</h2>";
       this.beginLocationCheck();
     },
     beginLocationCheck: function() {
@@ -37,7 +37,6 @@ import {loadApp} from './loadApp.js';
       console.error("This browser does not support geoLocation. Please update your browser.");
     },
     loadApp: function(position){
-      var parent = this.preText.parentElement.removeChild(this.preText);
       this.insertLoadSpinner();
       loadApp(position);
     },
@@ -46,7 +45,7 @@ import {loadApp} from './loadApp.js';
       progressBar.className = 'mdl-progress mdl-js-progress';
       progressBar.setAttribute('id','loading-progressBar');
       componentHandler.upgradeElement(progressBar);
-      var test = document.querySelector('.loader-container').appendChild(progressBar);
+      this.loaderCont.replaceChild(progressBar, this.loaderCont.firstChild);
     }
   }
   index.init();

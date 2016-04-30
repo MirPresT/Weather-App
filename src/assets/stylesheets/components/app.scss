@@ -4,6 +4,13 @@ body {
   // background-color: $beige;
 }
 
+#location-text{
+    color: white;
+    font-family: "Roboto",sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+}
 
 #app-container{
   overflow: hidden;
