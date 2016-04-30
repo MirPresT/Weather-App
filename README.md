@@ -1,9 +1,11 @@
 # Weather App
-####[View Live App](http://mirprest.github.io/Weather-App/)
+####[View Live App](https://mirprest.github.io/Weather-App/)
 
-*A weather app created while working through FCC*
+A weather app created while working through FCC
 
-####Functionality
+##### This app must be loaded via https to get the location
+
+#### Functionality
 On the initial load of the browser, the app will ask the user if it can access their location. Upon successfully acquiring the location, the app makes an ajax request to OpenWeatherMap.Org for both the current weather and forecast.
 
 Icons are displayed based on information in the successfully acquired json data. The Wind Tourbine spins according to the wind speed of your location or search.
